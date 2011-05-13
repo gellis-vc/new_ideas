@@ -1,0 +1,7 @@
+- comment = index_row
+%tr.data-row{:onclick => "document.location = '#{edit_admin_comment_path(comment.id)}'"}
+  = render :partial => 'admin/comments/live_checkbox', :locals => { :comment => comment, :attr => :hidden }
+  %td
+    .excerpt{:style => 'width: 48em'}= h(comment.text)
+  %td= show_if_nonzero comment.inappropriate_flags
+  %td= comment.created_at.strftime('%m/%d/%Y')

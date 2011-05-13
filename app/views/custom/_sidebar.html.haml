@@ -1,0 +1,9 @@
+.section
+  %h2.header What is BBYIDX?
+  %p
+    BBYIDX is a forum to share, vote on, and discuss ideas.
+    - unless logged_in?
+      = link_to "Sign up", signup_url
+      now and join the community.
+    %a.btn.gray{ :href => home_path('about'), :style => "width: 100px" }
+      %span Learn More &rarr;

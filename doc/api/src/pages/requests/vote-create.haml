@@ -1,0 +1,17 @@
+%h1 Request: Create Vote
+.request.box
+  .url
+    POST /ideas/
+    .placeholder<> idea ID
+    \/vote.xml
+  .parameters
+    Post parameters: none
+  .response
+    Response:
+    = link 'Vote', 'responses/vote.html'
+%p
+  Votes for an idea.
+  %b Requires authentication.
+  This request is idempotent.
+%p
+  == The server will not count multiple votes from the same user, and may apply other logic to counting votes. Therefore, clients #{should_not} assume that a vote will increment the rating by one. Instead, they #{should} either re-read the idea rating from the response or re-fetch the rating in a subsequent request.

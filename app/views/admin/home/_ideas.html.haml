@@ -1,0 +1,21 @@
+%table.admin-table{:cellspacing => 0, :cellpadding => 6, :width => '100%'}
+  %tr
+    %th= link_to 'New', admin_ideas_path(search.merge(:sort => 'ideas.viewed'))
+    %th{:title => 'Mark an idea as interesting' }= link_to 'Mark', admin_ideas_path(search.merge(:sort => 'ideas.flagged', :order => 'desc'))
+    %th{:title => 'Hide an idea from the public view' }= link_to 'Hide', admin_ideas_path(search.merge(:sort => 'ideas.hidden', :order => 'desc'))
+    %th{:title => 'Mark the idea as spam so it doesn\'t clutter the admin view ' }= link_to 'Spam', admin_ideas_path(search.merge(:sort => 'ideas.marked_spam', :order => 'desc'))
+    %th
+      = link_to 'Title', admin_ideas_path(search.merge(:sort => 'ideas.title'))
+      \/
+      = link_to 'Description', admin_ideas_path(search.merge(:sort => 'ideas.description'))
+    %th Admin Tags / Public Tags
+    %th= link_to 'Votes', admin_ideas_path(search.merge(:sort => 'ideas.rating', :order => 'desc'))
+    %th= link_to 'Comments', admin_ideas_path(search.merge(:sort => 'comment_count', :order => 'desc'))
+    %th= link_to 'Flagged', admin_ideas_path(search.merge(:sort => 'inappropriate_flags', :order => 'desc'))
+    %th= link_to 'Status', admin_ideas_path(search.merge(:sort => 'ideas.status', :order => 'desc'))
+    %th Duplicates
+    %th= link_to 'Created', admin_ideas_path(search.merge(:sort => 'ideas.created_at', :order => 'desc'))
+  = render :partial => 'admin/ideas/index_row', :collection => collection
+- if collection.next_page
+  .paginate
+    .next_page= link_to 'View all', admin_ideas_path(search)

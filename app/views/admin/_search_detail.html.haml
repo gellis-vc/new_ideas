@@ -1,0 +1,7 @@
+- model_names ||= model.name.pluralize
+- edit_path ||= method("edit_admin_#{model.name.underscore}_path".to_sym)
+
+- if search_pending_moderation?
+  %h3<
+    = model_names
+    pending moderation

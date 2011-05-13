@@ -1,0 +1,38 @@
+-# -cache ['idea_search', CGI.escape(params.inspect)], :expires_in => 5.minutes, :unless => logged_in? do
+%div
+  #popular-ideas.main.panel.section.hfeed
+    .header
+      %h2.icon{ :class => @body_class }=h @query_title
+      %ul.actions
+        %li= link_to image_tag("icn/16-sq-map.png", :alt => "Map these ideas") + "Map these ideas", map_ideas_path(current_objects)
+      = will_paginate current_objects
+    - if current_objects.empty?
+      .body
+        %div.idea-meta{ :style => "padding-right: 20px; padding-left: 20px;" }
+          %p No search results found. Try a different search?
+        %div.group.slate
+          - form_tag ideas_path, :method => :get, :id => 'idea_search_box' do
+            .form-group.inline
+              %label{ :for => "search_text" }
+                Search
+              = text_field_tag 'search_text', params[:search_text], :class => "input-text"
+            .form-submit.inline
+              = submit_tag 'Search', :class => "input-submit"
+    - else
+      .body.ideas-list.inset
+        %div
+          %div
+            = render :partial => 'idea', :collection => current_objects
+    .footer
+      = will_paginate current_objects
+  %hr.hide
+  #sidebar.aside
+    -if @minimap
+      .section
+        %h2
+          Idea Map
+        %a{:href => map_ideas_path(current_objects)}
+          #minimap{:style => 'width: 230px; height: 124px'}
+        = @minimap.to_html
+        = link_to 'Enlarge this map', map_ideas_path(current_objects)
+    = render :partial => "shared/sidebar"

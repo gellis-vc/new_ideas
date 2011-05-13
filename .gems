@@ -1,0 +1,14 @@
+rcov
+rails --version 2.1.1
+mash --version  0.0.3
+haml --version 2.0.3
+color --version 1.4.0
+ruby-hmac --version 0.3.2
+calendar_date_select --version 1.15
+fastercsv
+oauth --version 0.3.6
+oauth-plugin --version 0.3.14
+httparty --version 0.4.3
+twitter --version 0.6.5
+facebooker
+will_paginate --version 2.3.11

@@ -1,0 +1,32 @@
+.sitemap
+  %div
+    %h4 Ideas
+    %ul.nav.map
+      %li= link_to "Share Your Idea", root_url
+      %li= link_to 'Popular Ideas', idea_search_path(:search => 'top-rated')
+      %li= link_to 'Recent Ideas', idea_search_path(:search => 'recent')
+      %li= link_to 'Nearby Ideas', map_path
+  %div
+    %h4 Look Around
+    %ul.nav.map
+      %li= link_to 'Comments', comments_path
+      %li= link_to 'Tags', tags_path
+  %div
+    %h4 Get to Know Us
+    %ul.nav.map
+      %li= link_to "About BBYIDX", home_path('about')
+      %li= link_to "Contact", home_path('contact')
+  .last
+    %h4 Other Best Buy Projects
+    %ul.nav.ext
+      %li= link_to image_tag("bby-project-giftag.png", :alt => "Giftag"), "http://giftag.com", :target => "_blank"
+%ul.nav.supp
+  %li= link_to "Terms of Use", home_path('terms-of-use')
+%p.credit
+  Powered by
+  = link_to "Best Buy", "http://bestbuy.com", :target => "_blank"
+  and
+  = link_to "Bust Out Solutions", "http://bustoutsolutions.com", :target => "_blank"
+  using
+  = link_to "Ruby on Rails", "http://rubyonrails.org", :target => "_blank"
+  \.

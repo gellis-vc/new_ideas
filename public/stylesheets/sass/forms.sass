@@ -1,0 +1,228 @@
+input, textarea
+  :color #333
+  :font-family Helvetica, Arial, sans-serif
+  :font-size 12px
+  :vertical-align top
+  &.blur,
+  &.example
+    :color #a6abb0
+
+.input-text
+  :margin 0
+  :padding 7px 8px 0
+  :border 2px solid #a6abb0
+  :font-size 14px
+  :-moz-border-radius 8px
+  :-webkit-border-radius 8px
+  :height 19px
+  :width 284px
+
+  &.big
+    :padding-top 7px
+    :font-size 16px
+    :height 23px
+    :width 424px
+
+  &.thin
+    :width 204px
+
+  &.superthin
+    :width 124px
+
+
+.input-textarea,
+.comment-input textarea
+  :margin 0
+  :padding 7px 8px 0
+  :border 2px solid #a6abb0
+  :font-size 13px
+  :-moz-border-radius 8px
+  :-webkit-border-radius 8px
+  :padding-bottom 7px
+  :height 82px
+  :width 424px
+
+  &.big
+    :padding-top 7px
+    :font-size 16px
+    :height 119px
+
+.input-text, .input-textarea
+  &:disabled
+    :border-color #e0e0e0
+
+.idea-admin
+  :height 200px
+  :width 600px
+
+.form-group
+  :margin-bottom 18px
+
+  label
+    :font-size 14px
+    :font-weight bold
+    :line-height 16px
+
+  &.inline
+    label
+      :margin-right 20px
+      :padding-top 2px
+      :float left
+      :min-height 30px
+      :text-align right
+      :width 140px
+      a
+        :text-decoration underline
+      small
+        :display block
+        :font-size 10px
+        :font-weight normal
+        :line-height 10px
+        :text-transform uppercase
+        :margin-top 2px
+        
+    .note
+      :display block
+      :font-size 10px
+      :font-weight normal
+      :line-height 10px
+      :text-transform uppercase
+      :padding 4px 0 0 160px
+      :clear left
+
+    &.no-title, &.checkbox
+      :padding-left 160px
+      .note
+        :padding 4px 0 0
+      label
+        :margin-right 0
+        :padding-top 0
+        :font-size 12px
+        :float none
+        :min-height 18px
+        :text-align left
+        :width auto
+
+    >
+      .input-text, .input-textarea, .input-checkbox, .fieldWithErrors
+        :float left
+        
+    .input-checkbox
+      :margin-right 4px
+      
+  .note
+    :margin-bottom 8px
+    :color #888
+
+    a:hover
+      :text-decoration underline
+
+
+.form-submit.inline
+  :padding-left 160px
+  
+  .message
+    :width 384px
+
+
+.input-submit
+  :border none
+  :cursor pointer
+  :font-size 0px
+  :height 32px
+  :line-height 0px
+  :width 150px
+  :display inline
+  &:hover
+    :background-position left -32px
+
+  &:active
+    :background-position left -64px
+
+
+#share .input-submit
+  :background-image url(../images/form-submit-share-it.gif)
+
+#comments .input-submit
+  :background-image url(../images/form-submit-post-comment.gif)
+
+#ideas .input-submit
+  :background-image url(../images/form-submit-share-it.gif)
+
+#submit-login
+  :background-image url(../images/form-submit-login.gif)
+
+
+#submit-signup
+  :background-image url(../images/form-submit-signup.gif)
+
+
+#submit-update-account
+  :background-image url(../images/form-submit-update-account.gif)
+
+
+#submit-save-changes
+  :background-image url(../images/form-submit-save-changes.gif)
+
+#idea_search_box .input-submit
+  :background-image url(../images/form-submit-search.gif)
+
+
+#forgot-password .input-submit
+  :background-image url(../images/form-submit-send-reminder.gif)
+
+
+#intro .input-submit,
+#current .input-submit
+  :background-image url(../images/form-submit-share-my-idea.png)
+  :height 40px
+  :width 166px
+
+  &:hover
+    :background-position left -40px
+
+  &:active
+    :background-position left -80px
+
+#current .input-submit
+  :margin 10px 0 0 160px
+
+.group label
+  :color #425d78
+
+
+.errorExplanation
+  :margin-bottom 18px
+  :padding 18px 20px 0
+  :background-color #fbe3e4
+  :color #8a1f11
+  :overflow hidden
+
+  h2
+    :margin-bottom 8px
+    :color #740d00
+    :font-size 24px
+
+  p
+    :margin-bottom 8px
+
+  ul
+    :list-style none
+
+  li
+    :padding-left 24px
+
+
+.fieldWithErrors
+  .input-text, .input-textarea
+    :background-color #fbe3e4
+    :background-image none
+    :border-color #fbc2c4
+
+
+.fieldWithErrors + label
+  :color #8a1f11
+
+  a
+    :color #8a1f11
+    :text-decoration underline

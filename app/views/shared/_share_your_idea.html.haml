@@ -1,0 +1,38 @@
+- @idea = nil  # This form is always for a new idea; don't populate with other idea being shown
+
+#share.section
+  .body
+    #submit-idea
+      = error_messages_for :idea
+      - form_for :idea, :url => ideas_path, :has_example_text => true, :html => { :class => 'main' } do |f|
+        #idea-title-group.form-group.inline
+          %label{ :for => "idea-title" }
+            %strong Idea
+            %small Your idea, in short
+          = f.text_field :title, :example => 'My idea is...', :maxlength => 120, :size => 51, :id => "idea-title", :class => "input-text"
+        #idea-description-group.form-group.inline
+          %label{ :for => "idea-description" }
+            %strong Description
+            %small A brief explanation
+          = f.text_area :description, :example => "It'd be great if...", :id => "idea-description", :class => "input-textarea", :rows => "5", :cols => "30"
+        #idea-tags-group.form-group.inline
+          %label{ :for => "idea-tags" }
+            %strong Tags
+            %small Separate with commas
+          = f.text_field :tag_names, :example => 'music, home entertainment, discount', :class => "input-text"
+          = submit_tag 'Share My Idea', :class => "input-submit"
+      .aside
+        %div
+          %h4 Share your Idea
+          %p
+            Use this form to quickly share you idea with us. Remember, please keep it constructive.
+        - unless logged_in?
+          %div
+            %p
+              Don't have an account?
+              = link_to "Sign up.", signup_path
+  .footer
+    %div
+      %h4.one Just had an idea? Let us know about it.
+      %a.tab{ :href => "#" }
+        %span.dn Share your Idea

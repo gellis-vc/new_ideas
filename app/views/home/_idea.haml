@@ -1,0 +1,13 @@
+.idea.mini.hentry
+  .title
+    %h5.posted
+      Posted
+      %abbr.published.time-relative
+        = time_ago_in_words(idea.created_at)
+        ago
+      by
+      %span.vcard.author
+        = link_to h(idea.inventor.name), profile_path(idea.inventor), :class => 'fn url'
+    %h4.entry-title= link_to h(idea.title), idea_path(idea), :rel => 'bookmark'
+  %span{:id => "vote_#{idea.id}"}
+    = render :partial => 'votes/vote', :locals => { :idea => idea, :dom_id => "vote_#{idea.id}" }

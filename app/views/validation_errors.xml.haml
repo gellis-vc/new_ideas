@@ -1,0 +1,7 @@
+%validation-errors
+  -current_object.errors.each do |field, message|
+    %error
+      -unless field == 'base'
+        %field=h field
+        %field-display-name=h current_object.class.human_attribute_name(field)
+      %message=h  message

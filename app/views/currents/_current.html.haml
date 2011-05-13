@@ -1,0 +1,24 @@
+.idea.teaser.hentry
+  .the-current
+    %h4.posted
+      Current created
+      %abbr.published.time-relative
+        = time_ago_in_words(current.created_at)
+        ago
+      by
+      %span.vcard.author
+        - if !current.inventor.nil?
+          - if current.inventor.admin?
+            = link_to h(current.inventor.name), profile_path(current.inventor), :class => 'fn url admin'
+          - else
+            = link_to h(current.inventor.name), profile_path(current.inventor), :class => 'fn url'
+    %h3.entry-title= link_to h(current.title), current_path(current)
+    - current_ideas = search_ideas(:search => ['current', current.id])
+    %div
+      %p= h current.description
+      %p= link_to 'Submit ideas!', params[:action] == "show" ? "#add_idea" : current_path(current, :anchor=>"add_idea")
+      %ul.entry-meta
+        %li.ideas
+          = h "#{current_ideas.length}"
+          %span.points= h "idea#{current_ideas.length == 1 ? '' : 's'}"
+          in this current

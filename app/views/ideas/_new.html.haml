@@ -1,0 +1,21 @@
+-# This partial shared by /ideas/new, home page, and drop-down.
+= error_messages_for :idea
+- form_for :idea, :remote => true, :url => ideas_path, :update => 'submit-idea', :has_example_text => true do |f|
+  - if defined?(current) && !current.nil?
+    =f.hidden_field :current_id, :id => "idea-current-id", :value=>current.id
+  - else
+    =f.hidden_field :current_id, :id => "idea-current-id"
+  #idea-title-group.form-group.inline
+    = f.label :title, "Idea"
+    = f.text_field :title, :example => 'My idea is...', :maxlength => 120, :size => 51, :id => "idea-title", :class => "input-text big"
+  #idea-description-group.form-group.inline
+    = f.label :description, "Description"
+    = f.text_area :description, :example => "It'd be great if...", :id => "idea-description", :class => "input-textarea big", :rows => "7", :cols => "40"
+  #idea-tags-group.form-group.inline
+    %label{:for => "tags"} Tags
+    = render :partial => 'ideas/tag_editor', :locals => { :f => f }
+    = submit_tag 'Share My Idea', :class => "input-submit big"
+  %p.note>
+    %strong.alert<>
+      Remember
+    , please keep it constructive!

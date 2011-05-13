@@ -1,0 +1,4 @@
+.map-popup
+  = render :partial => 'ideas/idea', :locals => { :idea => idea }
+  - if logged_in? && current_user.admin
+    = link_to 'Edit idea', edit_admin_idea_path(idea)

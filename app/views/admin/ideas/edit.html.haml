@@ -1,0 +1,181 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Idea Detail
+      %h3= link_to "&laquo; Idea list", admin_ideas_path
+      -# ------- STYLE NEEDED ------
+      - if !current_object.duplicate_of_id
+        = link_to_remote h('Add to Duplicates Bucket'), :url => admin_bucket_add_idea_path(current_object), :method => :put, :update => 'bucket'
+      -# ------- /STYLE NEEDED ------
+    .body
+      .group
+        = error_messages_for :idea
+        - form_for current_object, :url => object_url, :html => { :method => :put } do |f|
+          .form-group.inline
+            = f.label nil, "Submitted by"
+            - if @idea.inventor
+              %strong= link_to h(@idea.inventor.name), edit_admin_user_path(@idea.inventor), :class => "icon user"
+            - else
+              %strong Unknown User
+              .warning.info Because the user did not complete the login process, this idea will be permanently hidden.
+          .form-group.inline
+            = f.label :current_id, "Current"
+            = f.select :current_id, Current.find(:all).map{|x|[x.title,x.id]}
+          .form-group.inline
+            = f.label :status, "Status"
+            = f.select :status, Idea::STATES.map{|x|[x,x]}
+          #show-idea-text
+            -if editor?
+              .edit
+                %a{:href => '#', :onclick => 'editIdeaText(); return false'} edit
+            %h1=h @idea.title
+            =user_formatted_text @idea.description
+          #edit-idea-text{ :style => 'display: none' }
+            .form-group.inline
+              = f.label :title, "Idea"
+              = f.text_field :title, :id => "idea_title", :class => "input-text big"
+            .form-group.inline
+              = f.label :description, "Description"
+              = f.text_area :description, :class => "input-textarea idea-admin"
+          :javascript
+            function editIdeaText() {
+              $('show-idea-text').style.display = 'none'
+              $('edit-idea-text').style.display = 'block'
+              new Effect.Highlight('edit-idea-text')
+            }
+          .form-group.inline
+            = f.label :tag_names, "Public Tags"
+            = f.text_field :tag_names, :id => "idea-tag-names", :class => "input-text"
+            %p.note Separate tags with commas
+          .form-group.inline
+            = f.label :admin_tag_names, "Admin Tags"
+            = f.text_field :admin_tag_names, :id => "idea-admin-tag-names", :class => "input-text"
+            %p.note Separate tags with commas
+          .form-group.inline.checkbox
+            = f.check_box :flagged, :id => "idea_flagged", :class => "input-checkbox"
+            = f.label :flagged, "Mark as interesting"
+            %p.note== For #{BBYIDX::COMPANY_NAME} internal use. Mark ideas you want to review further.
+          -if @idea.duplicate_of_id
+            .form-group.inline
+              .warning.info#duplicate
+                This idea is a duplicate of
+                = link_to h(@idea.duplicate_of.title), edit_admin_idea_path(@idea.duplicate_of)
+                %br/
+                = hidden_field_tag :clear_duplicate
+                - if editor?
+                  %a{:href => '#', :onclick => 'clearDuplicate(); return false', :class => "remove"} clear duplicate
+              .warning.info#duplicate-cleared{ :style => 'display: none' }
+                Duplicate flag will be be cleared when you click "Save Changes."
+              :javascript
+                function clearDuplicate() {
+                  $("clear_duplicate").value = "1"
+                  $("duplicate").style.display = "none"
+                  $("duplicate-cleared").style.display = "block"
+                }
+          -if !@idea.duplicates.empty?
+            .form-group.inline
+              = f.label "Duplicate ideas"
+              %ul{ :style => "padding-left:160px; margin-bottom:0;" }
+                -@idea.duplicates.each do |dup|
+                  %li= link_to h(dup.title), edit_admin_idea_path(dup)
+          -if @idea.inappropriate_flags > 0
+            .form-group.inline
+              .warning.info#inappropriate
+                Flagged as inappropriate
+                = @idea.inappropriate_flags
+                times.
+                %br/
+                = f.hidden_field :inappropriate_flags
+                - if editor?
+                  %a{:href => '#', :onclick => 'clearInappropriate(); return false'} clear flag
+              .warning.info#inappropriate-cleared{ :style => 'display: none' }
+                Inappropriate flag will be be cleared when you click "Save Changes."
+              :javascript
+                function clearInappropriate() {
+                  $("idea_inappropriate_flags").value = 0
+                  $("inappropriate").style.display = "none"
+                  $("inappropriate-cleared").style.display = "block"
+                }
+          .form-group.inline.checkbox
+            = f.check_box :hidden, :id => "idea_hidden", :class => "input-checkbox"
+            = f.label :hidden, "Hide from public"
+            %p.note Use to hide inappropriate ideas from public view. The idea remains available through this administration interface.
+          .form-group.inline
+            %label Life Cycle
+            = f.hidden_field :life_cycle_step_id
+            = collection_select :life_cycle_handler, :life_cycle, all_life_cycles, :id, :name, {:include_blank => true}, :onchange => 'updateLifeCycleDisplay()'  
+            - all_life_cycles.each do |life_cycle|
+              %ol.life-cycle{:id => "life_cycle_#{life_cycle.id}", :style => 'display: none'}
+                - life_cycle.steps.each do |step|
+                  %li{:id => "step_#{step.id}"}
+                    - unless step.last?
+                      = check_box :life_cycle_handler, "step_#{step.id}", check_box_onchange('updateLifeCycleDisplay()')
+                    =h step.name
+            :javascript
+              allLifeCycleIds = #{all_life_cycles.map{|lc| lc.id}.inspect}
+          
+              // Show/hide the step checklists and update all of the checkboxes based on
+              // the selected life cycle and the first step to be unchecked.
+          
+              function updateLifeCycleDisplay() {
+                var selectedLifeCycle = $('life_cycle_handler_life_cycle').value
+                allLifeCycleIds.each(function(id) {
+                  var stepList = $('life_cycle_' + id)
+                  if(id == selectedLifeCycle) {
+                    stepList.style.display = 'block'
+                
+                    var currentFound = false
+                    stepList.childElements().each(function(step) {
+                      var checkbox = step.down('input')
+                  
+                      // Figure out which step is the current one, updating the CSS classes as we go
+                  
+                      var enabled, checked
+                      if(currentFound) {
+                        step.className = 'future-step'
+                        enabled = checked = false
+                      } else if(!checkbox || !checkbox.checked) {
+                        // This is it!
+                        currentFound = true
+                        step.className = 'current-step'
+                        enabled = true
+                        checked = false
+                        // Change value of the hidden field that actually updates the idea when the form is submitted
+                        $('idea_life_cycle_step_id').value = step.id.match(/\d+$/)
+                      } else {
+                        step.className = 'past-step'
+                        enabled = checked = true
+                      }
+                  
+                      // Update checkbox
+                  
+                      if(checkbox) {
+                        checkbox.checked = checked
+                        if(enabled)
+                          checkbox.enable()
+                        else
+                          checkbox.disable()
+                      }
+                    })
+                  } else {
+                    stepList.style.display = 'none'
+                  }
+                })
+              }
+              
+              updateLifeCycleDisplay()
+          - if @idea.admin_comments.any?
+            .form-group.inline
+              %label Admin Comments
+              %ol#admin-comments
+                = render :partial => 'admin_comment', :collection => @idea.admin_comments
+                  
+          .form-group.inline.comment-input
+            %label New Admin Comment
+            - fields_for :admin_comment do |acf|
+              = acf.text_area :text
+          .form-submit.inline
+            = submit_tag 'Save Changes', :id => "submit-save-changes", :class => "input-submit"
+            /= link_to 'Cancel', admin_ideas_path, :class => "cancel"
+        = disable_form_unless_editor current_object
+    .footer

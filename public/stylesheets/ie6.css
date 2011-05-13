@@ -1,0 +1,95 @@
+.nav.site li a {
+  float: left;
+  line-height: 36px; }
+.nav.user li.search input {
+  margin-top: 2px; }
+
+.form-group.inline label {
+  float: none;
+  position: absolute;
+  left: 0; }
+
+#share .input-text, #share .input-textarea {
+  width: 437px; }
+
+.panel .header h2 {
+  width: 450px; }
+
+.ideas-group {
+  margin-right: 11px; }
+
+.actions li a {
+  float: left; }
+
+.idea .entry-meta li {
+  margin-right: 20px; }
+.idea.teaser .entry-meta li.tags {
+  width: 220px; }
+.idea.teaser .vote-for-it a, .idea.teaser .vote-for-it span {
+  background-image: url(../images/idea-vote-teaser-button.gif); }
+.idea.mini .entry-title {
+  width: 238px; }
+.idea.mini .vote-for-it a, .idea.mini .vote-for-it span {
+  background-image: url(../images/idea-vote-mini-button.gif); }
+
+.main .vote {
+  right: 25px;
+  top: 20px; }
+.main .vote-for-it span {
+  margin: 0;
+  margin-left: 2px;
+  background-image: url(../images/idea-vote-button.gif);
+  background-position: left -78px;
+  height: 26px;
+  width: 106px; }
+
+.teaser .vote {
+  left: 9px;
+  top: 8px; }
+.teaser .vote-for-it span {
+  margin-left: 3px;
+  background-image: url(../images/idea-vote-teaser-button.gif);
+  background-position: left -75px;
+  height: 25px;
+  width: 104px; }
+
+.mini .vote {
+  left: 5px;
+  top: 5px; }
+.mini .vote-count {
+  margin-bottom: 1px;
+  padding-top: 0;
+  font-size: 18px;
+  height: 37px;
+  line-height: 37px;
+  width: 40px; }
+  .mini .vote-count .points {
+    display: none !important; }
+.mini .vote-for-it span {
+  margin-left: 2px;
+  background-image: url(../images/idea-vote-mini-button.gif);
+  background-position: left -33px;
+  height: 11px;
+  width: 36px; }
+
+.input-text {
+  height: 19px; }
+
+input.big {
+  height: 23px; }
+
+#intro .header h3 a {
+  background-image: url(../images/intro-signup.gif); }
+#intro #idea-title-group {
+  background-image: url(../images/intro-form-icon-bulb.gif); }
+#intro #idea-description-group {
+  background-image: url(../images/intro-form-icon-pencil.gif); }
+#intro #idea-tags-group {
+  background-image: url(../images/intro-form-icon-tag.gif); }
+#intro .input-submit {
+  background-image: url(../images/form-submit-share-my-idea.gif); }
+
+.panel.summary .header .actions li {
+  background: none; }
+  .panel.summary .header .actions li a {
+    background: none; }

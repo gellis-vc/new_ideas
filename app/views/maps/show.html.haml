@@ -1,0 +1,22 @@
+%div
+  #nearby-ideas.main.panel.section.hfeed
+    .header
+      %h2.icon.nearby Nearby Ideas
+      %ul.actions
+        %li.input
+          - form_for :search, :remote => true, :url => map_path, :method => :get, :has_example_text => true do |f|
+            %label{ :for => "postal_code" } Your zip code:
+            = f.text_field :postal_code, :example => 'ZIP', :id => "search_postal_code", :class => "input-custom"
+            = submit_tag "Go", :class => "input-submit"
+    .body.inset
+      %div
+        #map.map-big= @map.to_html
+    .footer
+      -#
+        %p
+          Showing ideas from
+          %strong
+            94568
+  %hr.hide
+  #sidebar.aside
+    = render :partial => "shared/sidebar"

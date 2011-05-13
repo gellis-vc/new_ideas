@@ -1,0 +1,38 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 API client application
+      %h3= link_to '&laquo; Back to app list', admin_client_applications_path
+    .body
+      .group
+        -# ------- STYLE NEEDED ------
+        %p
+          = link_to 'Edit this application', edit_admin_client_application_path(current_object)
+        
+        %h3
+          OAuth details
+        %p
+          %strong Consumer Key:
+          %code=current_object.key
+        %p
+          %strong Consumer Secret:
+          %code=current_object.secret 
+
+        %p
+          %strong Request Token URL
+          %code
+            ="http#{'s' if request.ssl?}://#{request.host_with_port}#{current_object.oauth_server.request_token_path}"
+
+        %p
+          %strong Access Token URL
+          %code
+            ="http#{'s' if request.ssl?}://#{request.host_with_port}#{current_object.oauth_server.access_token_path}"
+
+        %p
+          %strong Authorize URL
+          %code
+            ="http#{'s' if request.ssl?}://#{request.host_with_port}#{current_object.oauth_server.authorize_path}"
+
+        %p
+          We support hmac-sha1 oauth signing.
+        -# ------- /STYLE NEEDED ------

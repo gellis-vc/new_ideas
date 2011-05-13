@@ -1,0 +1,18 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Ideas
+      =link_to "New Idea", new_idea_path
+      = render :partial => '/admin/search_detail', :locals => { :model => Idea, :name => lambda { |idea| idea.title } }
+      %ul.actions
+        %li.input= render :partial => '/admin/search', :locals => { :model => Idea, :name => lambda { |idea| idea.title } }
+        %li= link_to image_tag("icn/16-sq-map.png", :alt => "Map these ideas") + "Map these ideas", map_ideas_path(current_objects)
+    -# %ul.actions.filter_options
+    -#   -if !params[:marked_spam]
+    -#     %li= link_to "View spam", {:action=>:index,:marked_spam=>"true"}
+    -#   - else
+    -#     %li= link_to "View non-spam", {:action=>:index}
+    .body
+      #results
+        = render :partial => 'index'
+    .footer

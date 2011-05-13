@@ -1,0 +1,39 @@
+-# -cache ['current_search', CGI.escape(params.inspect)], :expires_in => 5.minutes, :unless => logged_in? do
+%div
+  #current.currents-page.panel.section.hfeed
+    .header
+      %h2.icon Idea Currents
+      %p A current is a flow of ideas that pertain to a specific topic. Submit ideas to a current and see how your idea matches up with the others in that current.
+      %ul.actions
+      -# = will_paginate current_objects
+    - if current_objects.empty?
+      .body
+        %div.current-meta{ :style => "padding-right: 20px; padding-left: 20px;" }
+          %p No search results found. Try a different search?
+        %div.group.slate
+          - form_tag currents_path, :method => :get, :id => 'current_search_box' do
+            .form-group.inline
+              %label{ :for => "search_text" }
+                Search
+              = text_field_tag 'search_text', params[:search_text], :class => "input-text"
+            .form-submit.inline
+              = submit_tag 'Search', :class => "input-submit"
+    - else
+      .body.currents-list.inset
+        %div
+          %div
+            =render :partial => 'current', :collection => current_objects
+    .footer
+      -# = will_paginate current_objects
+  %hr.hide
+  #sidebar.aside
+    -if @minimap
+      .section
+        %h2
+          Idea Map
+        %a{:href => map_ideas_path(current_objects)}
+          #minimap{:style => 'width: 230px; height: 124px'}
+        = @minimap.to_html
+        = link_to 'Enlarge this map', map_ideas_path(current_objects)
+    = render :partial => "shared/sidebar"
+

@@ -1,0 +1,17 @@
+##
+# This file created using information from:
+# http://blog.evanweaver.com/articles/2007/07/13/developing-a-facebook-app-locally/
+#
+development:
+  nate: 
+    facebook: 
+      key: a1aa0f934e9e4e46a0b13b70efca170b
+      secret: 3aa8ed1bc90aa21014c1261214556d6b
+    port: 10234
+    ssh_params: -p 2244
+  developer_two_username: 
+    facebook: 
+      key: ""
+      secret: ""
+    port: 10001
+  host: nimblegorilla.com

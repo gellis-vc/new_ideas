@@ -1,0 +1,4 @@
+= h "#{current_ideas.length}"
+%span.points= h "idea#{current_ideas.length == 1 ? '' : 's'}" 
+in this current.
+= link_to 'Submit an idea!', params[:action] == "show" ? "#add_idea" : current_path(current, :anchor=>"add_idea")

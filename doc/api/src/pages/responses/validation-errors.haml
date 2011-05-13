@@ -1,0 +1,38 @@
+%h1 Response: Validation Errors
+
+%p
+  == When a write request is well-formed and properly authenticated, but fails on input validation, the server returns an HTTP 200 containing a validation-errors node. Clients which make write requests #{must} check for the presence of a validation-errors response.
+
+%h2 XML Structure
+
+.response.box
+  .tag.i0
+    .name validation-errors
+  .tag.i1
+    .name error<span class='meta'>*</span>
+  .tag.i2
+    .name field
+    .description== (string) The name of the request parameter which failed validation. Clients #{should} use this value to match errors with input fields, but #{should_not} display this value to the user.
+  .tag.i2
+    .name field-display-name
+    .description== (string) A user-visible name for this field.
+  .tag.i2
+    .name message
+    .description (string) A description of the problem with this field. This message is structured so as to be grammatically correct when appended to the field-display-name.
+
+%h2 Example
+
+.xml<
+  :preserve
+    &lt;validation-errors&gt;
+      &lt;error&gt;
+        &lt;field&gt;title&lt;/field&gt;
+        &lt;field-display-name&gt;Title&lt;/field-display-name&gt;
+        &lt;message&gt;is too long (maximum is 120 characters)&lt;/message&gt;
+      &lt;/error&gt;
+      &lt;error&gt;
+        &lt;field&gt;description&lt;/field&gt;
+        &lt;field-display-name&gt;Description&lt;/field-display-name&gt;
+        &lt;message&gt;can't be blank&lt;/message&gt;
+      &lt;/error&gt;
+    &lt;/validation-errors&gt;

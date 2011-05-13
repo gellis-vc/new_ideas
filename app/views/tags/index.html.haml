@@ -1,0 +1,16 @@
+-# -cache('tagindex', :expires_in => 3.minutes) do
+%div
+  .main.panel.section
+    .header
+      %h2.icon.tag Tags
+      -# Uncomment once we have the ability to sort tags
+      -#%ul.actions
+      -#  %li= link_to image_tag("icn/16-sq-map.png", :alt => "Sort alphabetically") + "Sort Alphabetically", "#"
+      -#  %li= link_to image_tag("icn/16-sq-rss.png", :alt => "Sort by count") + "Sort By Count", "#"
+    .body
+      .tag-cloud
+        = render :partial => 'tag', :collection => current_objects
+    .footer
+  %hr.hide
+  #sidebar.aside
+    = render :partial => "shared/sidebar"

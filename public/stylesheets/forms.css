@@ -1,0 +1,193 @@
+input, textarea {
+  color: #333333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  vertical-align: top; }
+  input.blur, input.example, textarea.blur, textarea.example {
+    color: #a6abb0; }
+
+.input-text {
+  margin: 0;
+  padding: 7px 8px 0;
+  border: 2px solid #a6abb0;
+  font-size: 14px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  height: 19px;
+  width: 284px; }
+  .input-text.big {
+    padding-top: 7px;
+    font-size: 16px;
+    height: 23px;
+    width: 424px; }
+  .input-text.thin {
+    width: 204px; }
+  .input-text.superthin {
+    width: 124px; }
+
+.input-textarea,
+.comment-input textarea {
+  margin: 0;
+  padding: 7px 8px 0;
+  border: 2px solid #a6abb0;
+  font-size: 13px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  padding-bottom: 7px;
+  height: 82px;
+  width: 424px; }
+  .input-textarea.big,
+  .comment-input textarea.big {
+    padding-top: 7px;
+    font-size: 16px;
+    height: 119px; }
+
+.input-text:disabled, .input-textarea:disabled {
+  border-color: #e0e0e0; }
+
+.idea-admin {
+  height: 200px;
+  width: 600px; }
+
+.form-group {
+  margin-bottom: 18px; }
+  .form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px; }
+  .form-group.inline label {
+    margin-right: 20px;
+    padding-top: 2px;
+    float: left;
+    min-height: 30px;
+    text-align: right;
+    width: 140px; }
+    .form-group.inline label a {
+      text-decoration: underline; }
+    .form-group.inline label small {
+      display: block;
+      font-size: 10px;
+      font-weight: normal;
+      line-height: 10px;
+      text-transform: uppercase;
+      margin-top: 2px; }
+  .form-group.inline .note {
+    display: block;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 10px;
+    text-transform: uppercase;
+    padding: 4px 0 0 160px;
+    clear: left; }
+  .form-group.inline.no-title, .form-group.inline.checkbox {
+    padding-left: 160px; }
+    .form-group.inline.no-title .note, .form-group.inline.checkbox .note {
+      padding: 4px 0 0; }
+    .form-group.inline.no-title label, .form-group.inline.checkbox label {
+      margin-right: 0;
+      padding-top: 0;
+      font-size: 12px;
+      float: none;
+      min-height: 18px;
+      text-align: left;
+      width: auto; }
+  .form-group.inline > .input-text, .form-group.inline > .input-textarea, .form-group.inline > .input-checkbox, .form-group.inline > .fieldWithErrors {
+    float: left; }
+  .form-group.inline .input-checkbox {
+    margin-right: 4px; }
+  .form-group .note {
+    margin-bottom: 8px;
+    color: #888888; }
+    .form-group .note a:hover {
+      text-decoration: underline; }
+
+.form-submit.inline {
+  padding-left: 160px; }
+  .form-submit.inline .message {
+    width: 384px; }
+
+.input-submit {
+  border: none;
+  cursor: pointer;
+  font-size: 0px;
+  height: 32px;
+  line-height: 0px;
+  width: 150px;
+  display: inline; }
+  .input-submit:hover {
+    background-position: left -32px; }
+  .input-submit:active {
+    background-position: left -64px; }
+
+#share .input-submit {
+  background-image: url(../images/form-submit-share-it.gif); }
+
+#comments .input-submit {
+  background-image: url(../images/form-submit-post-comment.gif); }
+
+#ideas .input-submit {
+  background-image: url(../images/form-submit-share-it.gif); }
+
+#submit-login {
+  background-image: url(../images/form-submit-login.gif); }
+
+#submit-signup {
+  background-image: url(../images/form-submit-signup.gif); }
+
+#submit-update-account {
+  background-image: url(../images/form-submit-update-account.gif); }
+
+#submit-save-changes {
+  background-image: url(../images/form-submit-save-changes.gif); }
+
+#idea_search_box .input-submit {
+  background-image: url(../images/form-submit-search.gif); }
+
+#forgot-password .input-submit {
+  background-image: url(../images/form-submit-send-reminder.gif); }
+
+#intro .input-submit,
+#current .input-submit {
+  background-image: url(../images/form-submit-share-my-idea.png);
+  height: 40px;
+  width: 166px; }
+  #intro .input-submit:hover,
+  #current .input-submit:hover {
+    background-position: left -40px; }
+  #intro .input-submit:active,
+  #current .input-submit:active {
+    background-position: left -80px; }
+
+#current .input-submit {
+  margin: 10px 0 0 160px; }
+
+.group label {
+  color: #425d78; }
+
+.errorExplanation {
+  margin-bottom: 18px;
+  padding: 18px 20px 0;
+  background-color: #fbe3e4;
+  color: #8a1f11;
+  overflow: hidden; }
+  .errorExplanation h2 {
+    margin-bottom: 8px;
+    color: #740d00;
+    font-size: 24px; }
+  .errorExplanation p {
+    margin-bottom: 8px; }
+  .errorExplanation ul {
+    list-style: none; }
+  .errorExplanation li {
+    padding-left: 24px; }
+
+.fieldWithErrors .input-text, .fieldWithErrors .input-textarea {
+  background-color: #fbe3e4;
+  background-image: none;
+  border-color: #fbc2c4; }
+
+.fieldWithErrors + label {
+  color: #8a1f11; }
+  .fieldWithErrors + label a {
+    color: #8a1f11;
+    text-decoration: underline; }

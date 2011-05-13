@@ -1,0 +1,41 @@
+%h1 Response: Tag List
+
+%h2 XML Structure
+
+.response.box
+  .tag.i0
+    .name tags
+  .tag.i1
+    .name tag<span class='meta'>*</span>
+  .tag.i2
+    .name id
+    .description== Tag ID. Clients generally #{should_not} display IDs to users.
+  .tag.i2
+    .name name
+    .description (string)
+  .tag.i2
+    .name idea-count
+    .description (integer)
+
+%h2 Example
+
+.xml<
+  :preserve
+    &lt;tags&gt;
+      &lt;tag&gt;
+        &lt;id&gt;7&lt;/id&gt;
+        &lt;name&gt;entertainment&lt;/name&gt;
+        &lt;idea-count&gt;1&lt;/idea-count&gt;
+      &lt;/tag&gt;
+      &lt;tag&gt;
+        &lt;id&gt;8&lt;/id&gt;
+        &lt;name&gt;singing and dancing&lt;/name&gt;
+        &lt;idea-count&gt;1&lt;/idea-count&gt;
+      &lt;/tag&gt;
+      &lt;tag&gt;
+        &lt;id&gt;6&lt;/id&gt;
+        &lt;name&gt;stores&lt;/name&gt;
+        &lt;idea-count&gt;1&lt;/idea-count&gt;
+      &lt;/tag&gt;
+    &lt;/tags&gt;
+    

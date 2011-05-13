@@ -1,0 +1,11 @@
+%h1 Request: Show Profile
+.request.box
+  .url
+    GET /profiles/
+    .placeholder<> user ID
+    \.xml
+  .response
+    Response:
+    = link 'Profile', 'responses/profile.html'
+%p
+  Returns the details of a user's public profile, and lists their recent contributions to the site.

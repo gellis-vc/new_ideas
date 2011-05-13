@@ -1,0 +1,10 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Comments
+      %ul.actions
+        %li.input= render :partial => '/admin/search', :locals => { :model => Comment, :name => lambda { |comment| "Comment #{comment.id}" } }
+    .body
+      #results
+        = render :partial => 'index'
+    .footer

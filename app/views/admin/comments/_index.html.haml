@@ -1,0 +1,13 @@
+= render :partial => '/admin/search_feedback', :locals => { :model => Comment }
+
+.paginate= will_paginate current_objects
+
+%table.admin-table{:cellspacing => 0, :cellpadding => 6, :width => '100%'}
+  %tr
+    %th= sort_by 'Hide', 'comments.hidden', 'desc'
+    %th= sort_by 'Text', 'comments.text'
+    %th= sort_by 'Flagged', 'inappropriate_flags', 'desc'
+    %th= sort_by 'Created', 'comments.created_at', 'desc'
+  = render :partial => 'index_row', :collection => current_objects
+
+.paginate= will_paginate current_objects

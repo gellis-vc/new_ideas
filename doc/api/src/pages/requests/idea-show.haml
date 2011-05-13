@@ -1,0 +1,12 @@
+%h1 Request: Show Idea
+.request.box
+  .url
+    GET /ideas/
+    .placeholder<> idea ID
+    \.xml
+  .response
+    Response:
+    = link 'Idea', 'responses/idea.html'
+%p
+  Returns a detailed description of a single idea. Unlike the
+  idea search request, the response includes the full text of the idea's comments.

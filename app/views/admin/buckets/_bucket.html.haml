@@ -1,0 +1,47 @@
+-#= javascript_include_tag 'http://yui.yahooapis.com/combo?2.7.0/build/yahoo-dom-event/yahoo-dom-event.js&2.7.0/build/dragdrop/dragdrop-min.js'
+
+%h3 Idea Bucket
+
+- bucket_contents.each do |idea|
+  - next if @dup_drag && @dup_drag.id == idea.id
+  .idea{ :id => "bucket_idea_#{idea.id}" }
+    = link_to_remote 'a', :url => admin_bucket_remove_idea_path(idea), :method => :delete, :update => 'bucket', :html => {:class => 'remove', :onclick => "event.cancelBubble = true; event.stopPropagation()"}
+    = h(idea.title)
+    -if @dup_drop && @dup_drop.id == idea.id
+      &#x2194;
+      = h(@dup_drag.title)
+    -else
+      = link_to "&raquo;", edit_admin_idea_path(idea), :html => { :onclick => "event.cancelBubble = true; event.stopPropagation()" }
+  :javascript
+    var div_id = 'bucket_idea_#{idea.id}'
+    $(div_id).idea_id = '#{idea.id}'
+    
+    // If the bucket is updated via AJAX, then Droppables will already contain a reference to a now-defunct element
+    // with the same ID. We discard it so that the Droppables don't grow quadratically and slow everything down to a crawl.
+    
+    Droppables.drops = Droppables.drops.reject(function(d) { return d.element.id == div_id });
+    
+    // Now make the new idea element draggable, and make it accept other ideas dropped onto it.
+    
+    new Draggable(div_id, { revert: true })
+    Droppables.add(div_id, {
+      hoverclass: 'accept-drag',
+      accept: 'idea',
+      onDrop: function(element) {
+        var compare_dups_form = $('compare_dups_form')
+        compare_dups_form.action = compare_dups_form.action.replace(':idea1', '#{idea.id}').replace(':idea2', element.idea_id)
+        compare_dups_form.submit()
+      }
+    })
+- if bucket_contents.empty?
+  :javascript
+    $('bucket').style.display = 'none'
+- else
+  :javascript
+    $('bucket').style.display = 'block'
+
+%p.note
+  To link two duplicate ideas in the bucket, drag one onto the other.
+
+- form_tag admin_compare_duplicates_path(':idea1', ':idea2'), :style => 'display: none', :id => 'compare_dups_form', :method => :get do
+  / empty form

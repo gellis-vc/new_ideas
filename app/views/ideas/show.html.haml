@@ -1,0 +1,126 @@
+- if BBYIDX::FACEBOOK_ENABLED
+  :javascript
+    #{flash[:facebook_publish]}
+%div
+  #idea-1.main.panel.section.idea.hentry
+    .header
+      %h2.entry-title= h @idea.title
+      - if @idea.editable_by?(current_user)
+        %div
+          = link_to('edit', '#', :onclick => 'editIdeaText(); return false')
+          == (For the next #{time_ago_in_words(@idea.created_at + 15.minutes)})
+      :javascript
+        function editIdeaText() {
+          $('idea-1').hide();
+          $('edit-idea-1').show();
+        }
+        function cancelEdit() {
+          $('idea-1').show();
+          $('edit-idea-1').hide();
+        }
+      %h4.posted
+        Posted
+        %abbr.published.time-relative== #{time_ago_in_words(@idea.created_at)} ago
+        by
+        %span.vcard.author
+          - if @idea.inventor.admin?
+            = link_to h(@idea.inventor.name), profile_path(@idea.inventor), :class => "fn url admin"
+          - else
+            = link_to h(@idea.inventor.name), profile_path(@idea.inventor), :class => "fn url"
+        %br
+        - if !@idea.current.nil? && @idea.current.id != 1
+          Part of:
+          %strong= link_to h(@idea.current.title), current_path(@idea.current)
+          %br
+        Idea Status:
+        %strong= @idea.status
+      - unless @idea.duplicate_of
+        %span{:id => "vote_#{@idea.id}"}= render :partial => 'votes/vote', :locals => { :idea => @idea, :dom_id => "vote_#{@idea.id}" }
+      - else
+        %p.info
+          This idea is a duplicate of
+          = link_to @idea.duplicate_of.title, idea_path(@idea.duplicate_of)
+          \. Please visit the original idea to vote.
+    .body
+      .entry-content
+        %p= user_formatted_text @idea.description
+      .idea-meta
+        %div
+          %h3 About This Idea
+          %ul.entry-meta
+            %li.comments
+              = link_to "Comments #{"(#{@idea.comment_count})" if @idea.comment_count > 0}", "#comments"
+              |
+              = link_to "Post a Comment", "#post-comment"
+            %li.tags
+              - @idea.tags.each_with_index do |tag, ctr|
+                - unless ctr == @idea.tags.length - 1
+                  == #{link_to h(tag.name), idea_search_path(:search => ['tag', tag.name])},
+                -else
+                  == #{link_to h(tag.name), idea_search_path(:search => ['tag', tag.name])}
+            %li.sharethis= render :partial => 'sharethis'
+            %li.flag#xxx= render :partial => 'inappropriate/xxx', :locals => { :model => @idea, :dom_id => 'xxx' }
+        %div.related-ideas
+          %h3 
+            Related Ideas
+            %p 
+              There are no related ideas.
+        - unless @idea.duplicates.visible.empty?
+          %div.related-ideas
+            %h3 Duplicates of this Idea
+            %ul.entry-duplicates
+              - @idea.duplicates.visible.each do |idea|
+                %li= link_to h(idea.title), idea_path(idea)
+      #comments.group.slate
+        - if @idea.comments.visible.empty?
+          %h3 No Comments Yet. Write One!
+        - else
+          %h3== #{@idea.comment_count} Comments
+          .comments.inset
+            %div
+              %div= render :collection => @idea.comments.visible, :partial => 'comments/comment', :controller => 'comments'
+        - form_for :comment, :url => idea_comments_url(@idea), :html => { :onsubmit => 'return validateComment()' } do |f|
+          #comment-missing.message.error{:style => 'display: none'}
+            Please enter a comment.
+          .form-group.inline#post-comment
+            %label{ :for => "comment-text" } Your Comment
+            = f.text_area :text, :id => "comment-text", :class => "input-textarea"
+          .form-submit.inline
+            - if current_user && !current_user.active?
+              %p.message.info Your comment will not be publicly visible until you confirm your account.
+            = submit_tag "Post Comment", :class => "input-submit"
+        :javascript
+          function validateComment() {
+            if($('comment-text').value.blank()) {
+              $('comment-missing').style.display = 'block';
+              $('comment-text').focus();
+              return false;
+            } else {
+              return true;
+            };
+          };
+          function editCommentText(id) {
+            $$('#comment_'+id+' .comment-content')[0].hide();
+            $$('#comment_'+id+' .edit-comment-content')[0].show();
+          };
+          function validateCommentUpdate(id) {
+            if($('comment-'+id+'-text').value.blank()) {
+              $('comment-'+id+'-missing').style.display = 'block';
+              $('comment-'+id+'-text').focus();
+              return false;
+            } else {
+              return true;
+            };
+          };
+    .footer
+  %hr.hide
+  - if @idea.editable_by?(current_user)
+    #edit-idea-1.main.panel.section.idea.hentry{:style => "display:none"}
+      .header
+        %h2.entry-title Edit Idea
+      .body
+        = render :partial => 'edit'
+      .footer
+  #sidebar.aside
+    = render :partial => "shared/sidebar"
+    

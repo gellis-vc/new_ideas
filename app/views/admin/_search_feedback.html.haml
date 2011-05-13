@@ -1,0 +1,5 @@
+#search-wrap
+  -index_path ||= method("admin_#{model.name.pluralize.underscore}_path")
+  -if has_search?
+    %p
+      = link_to 'Clear search', index_path.call

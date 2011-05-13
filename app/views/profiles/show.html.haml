@@ -1,0 +1,71 @@
+%div
+  .main.panel.section
+    .header
+      - if @user.admin?
+        %h2.icon.user.admin=h @user.name
+      - else
+        %h2.icon.user=h @user.name
+      - unless @user.twitter_handle.blank?
+        %p.icon.twitter
+          Follow me on twitter
+          = link_to "@#{@user.twitter_handle}", "http://twitter.com/#{@user.twitter_handle}", :target => "_blank"
+        %p
+          =h @twitter_description
+    .body
+      .group.slate
+        %h3 Recent Ideas
+        - unless @user.ideas.length == 0
+          %h4
+            These are some of the ideas that
+            =h @user.name
+            created.
+          .ideas-list.inset
+            %div
+              %div
+                = render :collection => @user.ideas.recent_visible(10), :partial => 'ideas/idea'
+        -else
+          %h4
+            =h @user.name
+            hasn't posted any ideas yet.
+      .group.slate
+        %h3 Recent Comments
+        - unless @user.comments.length == 0
+          %h4
+            These are some of the comments that
+            =h @user.name
+            posted.
+          .inset.comments
+            %div
+              %div
+                = render :collection => @user.comments.recent_visible(10), :partial => 'comments/comment', :locals => { :idea_link => true }
+        - else
+          %h4
+            =h @user.name 
+            hasn't written any comments yet.
+      #votes.group.slate
+        %h3 Recent Votes
+        - unless @user.votes.length == 0
+          %h4
+            These are some of the ideas that
+            =h @user.name
+            voted for.  
+          .votes.inset
+            %div
+              %div
+                %ul.voted-for
+                  - @user.votes.recent_visible(10).each do |vote|
+                    %li
+                      = link_to truncate(h(vote.idea.title), 50), idea_path(vote.idea)
+                      %abbr.published.time-relative
+                        Posted
+                        = time_ago_in_words(vote.idea.created_at)
+                        ago
+        - else
+          %h4
+            =h @user.name
+            hasn't voted for any ideas yet.
+    .footer
+  %hr.hide
+  #sidebar.aside
+    = render :partial => "shared/sidebar"
+    

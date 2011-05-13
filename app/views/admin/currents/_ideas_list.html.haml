@@ -1,0 +1,16 @@
+.paginate= will_paginate ideas_list
+
+%table.admin-table{:cellspacing => 0, :cellpadding => 6, :width => '100%'}
+  %tr
+    %th
+      = sort_by 'Title', 'ideas.title'
+      \/
+      = sort_by 'Description', 'ideas.description'
+    %th Admin/Public Tags
+    %th= sort_by 'Votes', 'ideas.rating', 'desc'
+    %th= sort_by 'Comments', 'comment_count', 'desc'
+    %th= sort_by 'Status', 'ideas.status', 'desc'
+    %th= sort_by 'Created', 'ideas.created_at', 'desc'
+  = render :partial => 'ideas_list_row', :collection => ideas_list
+
+.paginate= will_paginate ideas_list

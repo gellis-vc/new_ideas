@@ -1,0 +1,19 @@
+#masthead.header
+  %div
+    %h1#logo
+      %a{ :href => "/", :rel => "home" }
+        = BBYIDX::LONG_SITE_NAME
+    #nav-primary
+      %ul.nav.site.alt.admin
+        %li.first= link_to 'Home', admin_root_path, :class => 'admin-home'
+        %li= link_to 'Ideas', admin_ideas_path, :class => 'ideas'
+        %li= link_to 'Currents', admin_currents_path, :class => 'currents'
+        %li= link_to 'Users', admin_users_path, :class => 'users'
+        %li= link_to 'Comments', admin_comments_path, :class => 'comments'
+        %li= link_to 'Life Cycles', admin_life_cycles_path, :class => 'life-cycles'
+        %li.last= link_to 'Client Apps', admin_client_applications_path, :class => 'client-apps'
+    %ul.nav.user
+      - if logged_in?
+        %li.first= link_to "Hello #{h current_user.name}" , profile_url(current_user)
+        %li= link_to 'Settings', edit_user_url
+        %li.last= link_to 'Log Out', logout_url

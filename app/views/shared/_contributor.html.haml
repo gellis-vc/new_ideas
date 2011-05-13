@@ -1,0 +1,4 @@
+%li{ :class => cycle("", "alt") }
+  %strong= contributor_counter + 1
+  = link_to h(contributor.name), profile_path(contributor)
+  %em== #{contributor.contribution_points.round} points

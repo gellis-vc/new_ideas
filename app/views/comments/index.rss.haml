@@ -1,0 +1,49 @@
+!!! XML
+%rss{ :version => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "xmlns:atom" => "http://www.w3.org/2005/Atom" }
+  %channel
+    %title
+      == #{BBYIDX::LONG_SITE_NAME}: #{idea ? "Comments on \"#{h idea.title}\"" : "All Comments"}
+    %link
+      -if idea
+        =idea_comments_url(idea)
+      -else
+        =comments_url
+    %atom:link{ :href => idea ? idea_comments_url(idea, :format => :rss) : comments_url(:format => :rss), :rel => 'self', :type => 'application/rss+xml' }/
+    %description
+      New comments posted to
+      -if idea
+        a specific idea
+      -else
+        all ideas
+      on
+      = BBYIDX::LONG_SITE_NAME
+    %language
+      en-us
+    %copyright
+      Copyright 2009, Best Buy Inc.
+    -unless current_objects.empty?
+      %pubDate
+        =rss_date current_objects.first.created_at
+    %lastBuildDate
+      =rss_date Time.now
+    %category
+      = BBYIDX::COMPANY_NAME
+    %generator
+      Rails
+    -current_objects.each do |comment|
+      %item
+        %title
+          -# DOUBLE-ESCAPING NECESSARY! The RSS client unescapes one layer; we need to prevent hostile HTML injection into the user's RSS reader.
+          =h "Comment #{idea ? " " : " on \"#{h comment.idea.title}\" "} by #{h comment.author.name}"
+        %link
+          ="#{idea_url comment.idea}#comment_#{comment.id}"
+        %guid
+          =comment_url(comment)
+        %description
+          -# The user_formatted_text call sanitizes what the user entered, then adds HTML tags. The outer h escapes those added tags.
+          =h user_formatted_text(comment.text)
+        %dc:creator
+          -# DOUBLE-ESCAPING NECESSARY
+          =h h comment.author.name
+        %pubDate
+          =rss_date comment.created_at

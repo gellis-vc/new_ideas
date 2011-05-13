@@ -1,0 +1,45 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Comment Details
+      %h3= link_to '&laquo; Back to comment list', admin_comments_path
+    .body
+      .group
+        = error_messages_for :comment
+        - form_for current_object, :url => object_url, :html => { :method => :put } do |f|
+          .form-group.inline
+            = f.label nil, "Submitted by"
+            %strong= link_to h(@comment.author.name), edit_admin_user_path(@comment.author)
+          .form-group.inline
+            = f.label nil, "Idea"
+            %strong= link_to h(@comment.idea.title), edit_admin_idea_path(@comment.idea)
+          .form-group.inline
+            = f.label :text, "Text"
+            = f.text_area :text, :class => "input-textarea"
+          -if @comment.inappropriate_flags > 0
+            .form-group.inline
+              .warning.info#inappropriate
+                Flagged as inappropriate
+                = @comment.inappropriate_flags
+                times
+                = f.hidden_field :inappropriate_flags
+                - if editor?
+                  %a{:href => '#', :onclick => 'clearInappropriate(); return false'}
+                    Clear
+              .warning.info#inappropriate-cleared{:style => 'display: none'}
+                Inappropriate flag will be be cleared when you click "Save Changes."
+              :javascript
+                function clearInappropriate() {
+                  $("comment_inappropriate_flags").value = 0
+                  $("inappropriate").style.display = "none"
+                  $("inappropriate-cleared").style.display = "block"
+                }
+          .form-group.inline.checkbox
+            = f.check_box :hidden, :class => "input-checkbox"
+            = f.label :hidden, "Hide from public"
+            %p.note Use to hide inappropriate comments from public view. The comment remains available through this administration interface.
+          .form-submit.inline
+            = submit_tag 'Save Changes', :id => "submit-save-changes", :class => "input-submit"
+            /= link_to 'Cancel', admin_comments_path, :class => "cancel"
+        = disable_form_unless_editor current_object
+    .footer

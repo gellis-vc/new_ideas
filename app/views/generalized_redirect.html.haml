@@ -1,0 +1,21 @@
+-#
+  Uses Javascript to redirect with an arbitrary http request method.
+  Useful when user performed a POST or PUT action which required a login,
+  and now needs to be redirected back to that action after login.
+
+- redirect_method ||= 'get'
+- redirect_params ||= {}
+- message ||= ''
+
+- form_tag redirect_path, :method => redirect_method, :id => 'redirect_form' do
+  - redirect_params.each do |key, value|
+    %input{:type => 'hidden', :name => key, :value => value}
+
+- if message
+  .redirect-message
+    %img{:src => '/images/spinner.gif', :valign => 'middle'}
+    %strong= message
+
+:javascript
+  // Timeout gives spinner a chance to load
+  setTimeout(function() { $('redirect_form').submit() }, 150)

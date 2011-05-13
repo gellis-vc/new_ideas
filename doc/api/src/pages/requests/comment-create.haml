@@ -1,0 +1,20 @@
+%h1 Request: Create Comment
+.request.box
+  .url
+    POST /ideas/
+    .placeholder<> idea ID
+    \/comments.xml
+  .parameters
+    Post parameters:
+    %ul
+      %li
+        %b comment[text]
+  .response
+    Response:
+    = link 'Comment', 'responses/comment.html'
+    or
+    = link 'Validation Errors', 'responses/validation-errors.html'
+%p
+  Creates a new comment attached the idea with the given ID.
+  %b Requires authentication.
+%p== If the creation is successful, clients #{may} retrieve the ID of the new comment from the response. The server #{may} massage or sanitize user input. Therefore, if clients display the newly created comment after the request succeeds, they #{should} either re-read the comment text from the response or re-fetch the comment in a subsequent request.

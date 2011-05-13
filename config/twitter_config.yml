@@ -1,0 +1,12 @@
+development:
+    key: IyEmlK78V3jK144ZiPhw
+    secret: nxcAuEdDBP3DRnCZp5ga5cdRBVos8MHJm34PiYZgLk
+ 
+test:
+    key: IyEmlK78V3jK144ZiPhw
+    secret: nxcAuEdDBP3DRnCZp5ga5cdRBVos8MHJm34PiYZgLk
+
+
+production:
+    key: IyEmlK78V3jK144ZiPhw
+    secret: nxcAuEdDBP3DRnCZp5ga5cdRBVos8MHJm34PiYZgLk

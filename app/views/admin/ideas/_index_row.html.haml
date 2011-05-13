@@ -1,0 +1,26 @@
+- idea = index_row
+
+%tr{:class => idea.viewed ? 'data-row' : 'unviewed', :onclick => "document.location = '#{edit_admin_idea_path(idea.id)}'"}
+  %td
+    = image_tag 'unread.gif' unless idea.viewed
+    &nbsp;
+  = render :partial => 'admin/ideas/live_checkbox', :locals => { :idea => idea, :attr => :flagged }
+  = render :partial => 'admin/ideas/live_checkbox', :locals => { :idea => idea, :attr => :hidden }
+  = render :partial => 'admin/ideas/live_checkbox', :locals => { :idea => idea, :attr => :marked_spam }
+  %td.no-overflow
+    .primary.excerpt= h(idea.title)
+    .secondary.excerpt= h(truncate(idea.description, 140))
+  %td
+    .excerpt= idea.admin_tags.empty? ? "&ndash;" : h(idea.admin_tag_names)
+    .secondary.excerpt= h(idea.tag_names)
+  %td= idea.rating.round.to_i
+  %td= idea.comment_count
+  %td
+    = show_if_nonzero idea.inappropriate_flags
+  %td= idea.status
+  - if idea.duplicate_of_id
+    %td Duplicate Idea
+  - else
+    %td{:onclick => "event.cancelBubble = true; event.stopPropagation()"}
+      = link_to_remote 'Add to Bucket', :url => admin_bucket_add_idea_path(idea), :method => :put, :update => 'bucket'
+  %td= idea.created_at.strftime('%m/%d/%y')

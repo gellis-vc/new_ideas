@@ -1,0 +1,9 @@
+%h1 Request: Index Tags
+.request.box
+  .url
+    GET /tags.xml
+  .response
+    Response:
+    = link 'Tag List', 'responses/tags.html'
+%p
+  Returns the top tags on the site, listed in decreasing order of popularity.

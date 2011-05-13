@@ -1,0 +1,16 @@
+%h1 Authentication
+
+%p
+  == BBYIDX uses the #{link 'OAuth 1.0a', 'http://oauth.net/'} standard for API authentication, with HMAC-SHA1. This means that the first time a user runs your client application, you will need to open a browser pointed at the BBYIDX site, where the user will log in and give your application permission to use their account. Relevant request paths include:
+
+.request.box
+  .url
+    \/oauth/access_token
+  .url
+    \/oauth/request_token
+  .url
+    \/oauth/authorize
+
+%p
+  Information on using OAuth is beyond the scope of this guide. OAuth client libraries and tutorials are available in a wide variety of languages. If you are looking for example code, search for a Twitter integration example in your language of choice &mdash; Twitter also uses OAuth, and the process will be very similar.
+

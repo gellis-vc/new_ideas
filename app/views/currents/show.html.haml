@@ -1,0 +1,55 @@
+%div
+  #idea.currents-page.panel.section.idea.hentry
+    .header
+      %h2.entry-title=h "Current: #{@current.title}"
+      %h4.posted
+        Created
+        %abbr.published.time-relative== #{time_ago_in_words(@current.created_at)} ago
+        by
+        %span.vcard.author
+          - if !@current.inventor.nil?
+            - if @current.inventor.admin?
+              = link_to h(@current.inventor.name), profile_path(@current.inventor), :class => "fn url admin"
+            - else
+              = link_to h(@current.inventor.name), profile_path(@current.inventor), :class => "fn url"        
+        - unless @current.submission_deadline.nil?
+          %br
+          Submission Deadline:
+          %strong= @current.submission_deadline
+        %br
+        Current Status:
+        - if @current.closed?
+          %strong closed
+        - else
+          %strong open
+    .body
+      .entry-content
+        %p= user_formatted_text @current.description
+      .current-meta
+        %div
+          %h3 About This Current
+          %ul.entry-meta   
+            %li.ideas= render :partial => 'idea_count', :locals => { :current_ideas => @current_ideas }
+            %li.sharethis= render :partial => 'ideas/sharethis'
+      .group.slate
+        -# if @current_ideas.visible.empty?
+        - if @current_ideas.empty?
+          %h3#add_idea
+            There are no ideas in this current.
+            = link_to 'Submit an idea!', params[:action] == "show" ? "#add_idea" : current_path(current, :anchor=>"add_idea")
+            %a{:name=>"add_idea"}
+        - else
+          %h3= render :partial => 'idea_count', :locals => { :current_ideas => @current_ideas }
+          .ideas-list.inset.current-idea-list
+            %div
+              %div
+                = render :collection => @current_ideas, :partial => 'ideas/idea', :controller => 'ideas'
+      #current.group.slate
+        - unless @current_ideas.empty?
+          %h3#add_idea
+            Submit another idea to this current
+        =render :partial=>"ideas/new", :locals=>{:current=>@current}
+    .footer
+  %hr.hide
+  #sidebar.aside
+    = render :partial => "shared/sidebar"

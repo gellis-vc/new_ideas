@@ -1,0 +1,10 @@
+%ul.vote
+  %li.vote-count
+    = h "#{idea.rating.round.to_i}"
+    %span.points= h "point#{idea.rating.round.to_i == 1 ? '' : 's'}" 
+  %li.vote-for-it
+    - if has_voted?(idea)
+      -# This doesn't get evaluated to TRUE in an ajax update.
+      %span You Voted!
+    - else
+      = link_to_remote 'Vote!', :update => dom_id, :url => idea_vote_path(idea.id), :complete => visual_effect(:highlight, dom_id, :duration => 0.8)

@@ -1,0 +1,16 @@
+= render :partial => 'custom/sidebar'
+
+- unless @body_class == 'tags-page'
+  .section
+    %h2.header Most Popular Tags
+    .tag-cloud
+      = render :partial => 'tags/tag', :collection => Tag.find_top_tags(10)
+    %a.btn.gray{ :href => tags_path, :style => "width: 120px" }
+      %span See More Tags &rarr;
+      
+-cache 'top_contributors', :expires_in => 3.minutes, :unless => logged_in? do
+  .section
+    %h2.header Top Contributors
+    %p Earn points for sharing, voting, and discussing ideas.
+    %ul#top-contributors.list-block
+      = render :partial => 'shared/contributor', :collection => User.find_top_contributors(:limit => 10)

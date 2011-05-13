@@ -1,0 +1,10 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Users
+      %ul.actions
+        %li.input= render :partial => '/admin/search', :locals => { :model => User, :name => lambda { |user| user.name } }
+    .body
+      #results
+        = render :partial => 'index'
+    .footer

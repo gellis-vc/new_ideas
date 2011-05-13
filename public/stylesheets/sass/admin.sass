@@ -1,0 +1,226 @@
+.admin-home
+  h3
+    :margin-top 2em
+    
+table
+  :margin-bottom 0
+  :width 100%
+
+
+th
+  :padding 8px 18px 8px 8px
+  :padding-top 10px
+  :background #9ec8f0
+  :border-bottom 2px solid #78a5cf
+  :font-weight bold
+  :text-align center
+  :white-space nowrap
+
+
+td
+  :padding 8px 18px 8px 8px
+  :border-top 1px solid #fff
+  :border-bottom 1px solid #ccc
+  :vertical-align top
+
+.excerpt
+  :max-width 150px
+  :overflow hidden
+
+caption
+  :padding 8px 18px 8px 8px
+
+
+tr
+  :background #FFF
+  &.unviewed
+    :background #f2f2f2
+    &:hover
+      :background #ffef1b
+      :cursor pointer
+      td
+        :border-top-color #ffef1b
+        :border-bottom-color #decf00
+  &:hover
+    :background #fff895
+    :cursor pointer
+    td
+      :border-top-color #fff895
+      :border-bottom-color #decf00
+  th:hover
+    :cursor default
+
+table.no-hover
+  tr:hover
+    :background none
+    :cursor default
+  td
+    :border none
+    
+.admin-table
+  input[type=checkbox]
+    :vertical-align baseline
+
+  form
+    :text-align center
+
+
+.sort
+  :display inline
+
+
+div
+  &.primary
+    :color #425d78
+    :font-weight bold
+
+  &.secondary
+    :color #666
+
+.warning
+  :margin-left 160px
+  :width 585px
+
+.life-cycle
+  :margin 10px 0 0 180px
+
+.inplaceeditor-form
+  :margin 0
+  :font-weight normal
+  input[type="submit"]
+    :margin 0 0.6em 0 0.4em
+
+.new
+  :font-weight bold
+
+.life-cycle-edit
+  :width 60ex
+  .new
+    :list-style-type none
+  .reorder, .delete
+    :margin 0.4em 0 0 0.8em
+    :float right
+    :width 10px
+    :height 10px
+    :background-repeat no-repeat
+  .reorder
+    :cursor move
+  .delete
+    :background-image url('/images/close.gif')
+  .delete:hover
+    :background-position -10px 0px
+  .delete-options
+    :display none
+    :margin 0.2em 0 1.2em 0
+    :padding 0.6em 0.8em
+    :color #000
+    :background #FFCCCC
+    :border 2px solid #EE0000
+    form
+      :margin 0
+
+/ on idea page:
+.life-cycle
+  :width 50%
+  .past-step
+  .current-step
+    :color #000
+    :background #BFD
+  .future-step
+    :color #AAA
+
+/ ------- STYLE NEEDED ------
+body
+  :padding-bottom 100px
+  
+#bucket
+  :padding 0px 16px
+  :background-color white
+  :border-top 4px solid #999
+  :width 100%
+  :position fixed
+  :left 0px
+  :bottom 0px
+
+  .idea
+    :margin 0 8px 8px 0
+    :padding 4px 8px 4px 18px
+    :background-color #fff895
+    :border 1px solid #decf00
+    :border-bottom-width 2px
+    :color #534d00
+    :display block
+    :float left
+    :font-size 100% !important
+    :vertical-align baseline
+    :-moz-border-radius 6px
+    :-webkit-border-radius 6px
+    :font-weight bold
+    :cursor default
+    .remove
+      :cursor pointer
+      :display block
+      :float left
+      :height 16px
+      :width 10px
+      :margin 0 0 0 -12px
+      :line-height 1.8em
+      :overflow hidden
+      :position absolute
+      :text-indent -9999px
+      :background url(../images/close.gif) left center no-repeat
+      &:hover
+        :background-position -10px center
+  
+  .idea.accept-drag
+    :background-color #dfd875
+    :border-color #ae9f00
+    :color #222
+  
+  h3
+    :margin-top 0
+    :margin-bottom 0.2em
+    :padding 0
+  
+  .note
+    :clear both
+    :color #777
+    :margin 0.3em 0
+  
+  &:after, &:before
+    :content "."
+    :display block
+    :height 1
+    :clear both
+    :visibility hidden
+/ ------- /STYLE NEEDED ------
+
+
+/ ------- STYLE NEEDED ------
+#show-idea-text, #show-current-text
+  :background-color #EEF
+  :border 2px solid #CCC
+  :margin 0 10em 3em 160px
+  :padding 1em
+  :-moz-border-radius 6px
+  :-webkit-border-radius 6px
+  .edit
+    :float right
+  h1
+    :margin-bottom 0.5em
+    :line-height 1.3em
+/ ------- /STYLE NEEDED ------
+
+
+/ ------- STYLE NEEDED ------
+ol#admin-comments
+  :margin 0 0 0 160px
+  li
+    :list-style-type none
+  .admin-comment
+    :margin-bottom 1em
+  h4
+    :margin-bottom 0
+  .admin-comment-content
+    :margin-left 1em
+/ ------- /STYLE NEEDED ------

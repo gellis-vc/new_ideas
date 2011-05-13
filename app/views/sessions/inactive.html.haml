@@ -1,0 +1,13 @@
+%div
+  .main.panel.section
+    .header
+      %h2 Account Not Yet Activated
+    .body
+      .content
+        %p
+          Your account has not been activated yet. You should have received an email with an activation link. You need to follow this link to activate your account. If you cannot find this email, we can
+          = link_to 'send a new one', send_activation_path(:email => params[:email]), :method => :post
+    .footer
+  %hr.hide
+  #sidebar.aside
+    = render :partial => "shared/sidebar"

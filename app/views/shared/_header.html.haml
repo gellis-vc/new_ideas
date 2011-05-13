@@ -1,0 +1,30 @@
+#masthead.header
+  %div
+    %h1#logo= link_to BBYIDX::LONG_SITE_NAME, root_path
+    #nav-primary
+      -cache('primary_nav') do
+        %ul.nav.site.alt.title-ideas
+          %li.first= link_to "Share", root_path, :class => "home"
+          %li= link_to 'Popular', idea_search_path(:search => 'top-rated'), :class => 'top-rated'
+          %li= link_to 'Recent', idea_search_path(:search => 'recent'), :class => 'recent'
+          %li= link_to 'Currents', currents_path, :class => 'currents'
+          %li.last= link_to 'Nearby', map_path, :class => 'nearby'
+        %ul.nav.site
+          %li.first= link_to 'Comments', comments_path, :class => 'comments'
+          %li.last= link_to 'Tags', tags_path, :class => 'tags'
+    %ul.nav.user
+      - if logged_in?
+        %li.first= link_to "#{h current_user.name}" , profile_url(current_user)
+        %li= link_to 'Settings', edit_user_path
+        %li= link_to "About", home_path('about')
+        %li= link_to 'Log Out', logout_path
+      - else
+        -cache('nouser_nav') do
+          %li.first= link_to "About", home_path('about')
+          %li= link_to "Sign Up", signup_path
+          %li=link_to 'Log in', login_path
+      %li.last.search
+        - form_tag ideas_path, :method => :get, :id => 'idea_search_box' do
+          %label{ :for => "search_text" }
+            Search: 
+          = text_field_tag 'search_text', params[:search_text]

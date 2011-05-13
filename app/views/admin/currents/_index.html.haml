@@ -1,0 +1,15 @@
+= render :partial => '/admin/search_feedback', :locals => { :model => Idea }
+
+.paginate= will_paginate current_objects
+
+%table.admin-table{:cellspacing => 0, :cellpadding => 6, :width => '100%'}
+  %tr
+    %th
+      = sort_by 'Title', 'currents.title'
+      \/
+      = sort_by 'Description', 'currents.description'
+    %th= sort_by 'Ideas Submitted', 'idea_count'
+    %th= sort_by 'Created', 'currents.created_at', 'desc'
+  = render :partial => 'index_row', :collection => current_objects
+
+.paginate= will_paginate current_objects

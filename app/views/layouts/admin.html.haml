@@ -1,0 +1,49 @@
+!!! Strict
+%html{ :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head{ :profile => "http://gmpg.org/xfn/1" }
+    %title== #{BBYIDX::LONG_SITE_NAME} | Admin
+    %link{ :href => "/favicon.ico", :rel => "icon", :type => "image/x-icon" }
+    %meta{ :content => 'text/html; charset=UTF-8', "http-equiv" => "Content-Type" }/
+    = stylesheet_link_tag 'master'
+    = stylesheet_link_tag 'admin'
+    /[if lt IE 8]
+      = stylesheet_link_tag 'ie'
+    /[if lt IE 7]
+      = stylesheet_link_tag 'ie6'
+      = javascript_include_tag 'IE7'
+    = javascript_include_tag 'example_text'
+    = javascript_include_tag :defaults
+    = javascript_include_tag 'jquery.min'
+    = javascript_include_tag  'ga', 'global'
+    :javascript
+      jQuery.noConflict(); // prevent jQuery from overriding $ operator, so that it doesn't fight with Prototype
+    
+    - if @map || @minimap
+      = GMap.header
+      = javascript_include_tag 'ym4r-gm', :cache => true
+  %body.admin{ :class => @body_class }
+    -#= request.path_parameters.inspect
+    #wrap
+      = render :partial => "admin/shared/header"
+      %hr.hide
+      #share
+        .footer
+      #content
+        = render :partial => "shared/flash_messages"
+        = yield
+    
+    #bucket
+      = render :partial => "admin/buckets/bucket"
+    
+    /[if lt IE 7]
+      = stylesheet_link_tag 'ie6'
+      = javascript_include_tag 'IE7'
+    
+    :javascript
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    :javascript
+      try {
+        var pageTracker = _gat._getTracker("UA-6257094-1");
+        pageTracker._trackPageview();
+      } catch(err) {}

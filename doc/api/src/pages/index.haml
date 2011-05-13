@@ -1,0 +1,31 @@
+%h1 Contents
+
+%ul
+  %li
+    Requests
+    %ul
+      %li= link 'Index/Search Ideas', 'requests/idea-search.html'
+      %li= link 'Show Idea',          'requests/idea-show.html'
+      %li= link 'Create Idea',        'requests/idea-create.html'
+      %li= link 'Create Comment',     'requests/comment-create.html'
+      %li= link 'Create Vote',        'requests/vote-create.html'
+      %li= link 'Show Profile',       'requests/profile-show.html'
+      %li= link 'Index Tags',         'requests/tag-index.html'
+  %li                                 
+    Responses                         
+    %ul                               
+      %li= link 'Idea',               'responses/idea.html'
+      %li= link 'Idea List',          'responses/ideas.html'
+      %li= link 'Comment',            'responses/comment.html'
+      %li= link 'Profile',            'responses/profile.html'
+      %li= link 'Tag List',           'responses/tags.html'
+      %li= link 'Validation Errors',  'responses/validation-errors.html'
+      %li= link 'HTTP Error Codes',   'responses/http-errors.html'
+  %li= link 'Pagination', 'pagination.html'
+  %li= link 'Authentication', 'oauth.html'
+
+%h1 Overview
+
+%p BBYIDX exposes its basic functionality via an HTTP API. Requests use standard GET and POST parameters; responses are XML. BBYIDX does not guarantee the order of tags in XML responses. Future responses may reorder tags, or add new ones.
+  
+%p== The API uses OAuth for #{link 'authentication', 'oauth.html'}. Authentication is not necessary for many requests, but may cause some requests to return additional user-specific information. It is required for all write operations.

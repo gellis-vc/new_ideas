@@ -1,0 +1,98 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 User Details
+      %h3= link_to '&laquo; Back to user list', admin_users_path
+    .body
+      .group
+        = error_messages_for :user
+        %h3== Edit #{h(@user.name)}
+        - form_for current_object, :url => object_url, :html => { :method => :put } do |f|
+          .form-group.inline
+            = f.label :email, "Email"
+            = f.text_field :email, :class => "input-text"
+          .form-group.inline
+            = f.label :name, "Screen name"
+            = f.text_field :name, :class => "input-text"
+          .form-group.inline
+            = f.label :zip_code, "ZIP code"
+            = f.text_field :zip_code, :class => "input-text"
+          .form-group.inline
+            = f.label :password, "New password"
+            = f.password_field :password, :class => "input-text"
+          .form-group.inline
+            = f.label :password_confirmation, "Confirm"
+            = f.password_field :password_confirmation, :class => "input-text"
+          .form-group.inline
+            = f.label :twitter_handle, "Twitter Username"
+            = f.text_field :twitter_handle, :class => "input-text"
+          .form-group.inline.checkbox
+            = f.check_box :tweet_ideas, :class => "input-checkbox"
+            = f.label :tweet_ideas, "Tweet ideas"
+          .form-group.inline
+            = f.label nil, "State"
+            #user-state
+              = render :partial => 'admin/users/state'
+          .form-group.inline
+            = f.label nil, "Owned Currents"
+            - @user.currents.each do |current|
+              =link_to h(current.title), edit_admin_current_path(current)
+          .form-group.inline
+            = f.label nil, "Invited Currents"
+            #user-currents
+              %ul
+                - @user.is_invitee_for_what.each do |current|
+                  %li=link_to h(current.title), edit_admin_current_path(current)
+              Invite to 
+              %select{:name=>"invite_to", :id=>"invite_to"}
+                = options_for_select Current.all.map{|x|[x.title,x.id]}
+          .form-group.inline.checkbox
+            .left-padded
+              = f.check_box :admin, check_box_onchange('adminFlagChanged()')
+              = f.label :admin, "Administrator", :class => "checkbox-label"
+          #idea-admin
+            .form-group.inline.checkbox
+              %ul
+                - editable_classes.each do |edit_class|
+                  %li
+                    = check_box_tag "user[editor][#{edit_class}]", 1, is_editor?(edit_class)
+                    %label.checkbox-label
+                      Editor of
+                      %strong= edit_class.name.underscore.pluralize.gsub('_', ' ')
+                %li
+                  = f.check_box :moderator
+                  = f.label :moderator, "Moderator for inappropriate content", :class => "checkbox-label"
+            .form-group.inline.checkbox
+              = f.check_box :notify_on_state, :class => "input-checkbox"
+              = f.label :notify_on_state, "Notify when idea enters life cycle step I manage"
+            .form-group.inline.checkbox
+              .left-padded
+                - all_life_cycles.each do |life_cycle|
+                  %strong=h life_cycle.name
+                  %ol
+                    - life_cycle.steps.each do |step|
+                      %li
+                        = check_box_tag "user[life_cycle_step_ids][]", step.id, @user.life_cycle_step_ids.include?(step.id)
+                        %label.checkbox-label=h step.name
+            :javascript
+              function adminFlagChanged() {
+                $('idea-admin').style.display = $('user_admin').checked ? '' : 'none'
+              }
+              adminFlagChanged()
+          .form-submit.inline
+            = submit_tag 'Save Changes', :id => "submit-save-changes", :class => "input-submit"
+            /= link_to 'Cancel', admin_users_path, :class => "cancel"
+        = disable_form_unless_editor current_object
+        %br
+        .group.slate
+          %h3== #{h(@user.name)}'s Ideas
+          %ol.user-ideas
+            - @user.ideas.each do |idea|
+              %li= link_to h(idea.title), edit_admin_idea_path(idea)
+        .group.slate
+          %h3== #{h(@user.name)}'s Comments
+          %ol.user-comments
+            - @user.comments.each do |comment|
+              %li= link_to h(comment.text), edit_admin_comment_path(comment)
+    .footer
+  

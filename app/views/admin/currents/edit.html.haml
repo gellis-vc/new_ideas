@@ -1,0 +1,55 @@
+= calendar_date_select_includes "blue" # or "red", or "silver", or nil for the default! 
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Details for this Current
+      %h3= link_to "&laquo; List of Currents", admin_currents_path
+      %ul.actions
+        -# %li= link_to image_tag("icn/16-sq-find.png", :alt => "Find similar currents") + "Find similar currents", admin_similar_currents_path(current_object)
+    .body
+      .group
+        = error_messages_for :current
+        - form_for current_object, :url => object_url, :html => { :method => :put } do |f|
+          .form-group.inline
+            = f.label nil, "Submitted by"
+            - if @current.inventor
+              %strong= link_to h(@current.inventor.name), edit_admin_user_path(@current.inventor), :class => "icon user"
+            - else
+              %strong Creator unknown.
+          .form-group.inline
+            = f.label :submission_deadline, "Submission Deadline"
+            = calendar_date_select :current, :submission_deadline 
+          .form-group.inline
+            = f.label :invite_only, "Invitation required"
+            = f.check_box :invitation_only, :id => "current_invitation_only" 
+          .form-group.inline
+            =f.label :invitees, "Invitees"
+            =render :partial => "invitees"
+          #show-current-text
+            -if editor?
+              .edit
+                %a{:href => '#', :onclick => 'editCurrentText(); return false'} edit
+            %h1=h @current.title
+            =user_formatted_text @current.description
+          #edit-current-text{ :style => 'display: none' }
+            .form-group.inline
+              = f.label :title, "Idea"
+              = f.text_field :title, :id => "current_title", :class => "input-text big"
+            .form-group.inline
+              = f.label :description, "Description"
+              = f.text_area :description, :class => "input-textarea idea-admin"
+          :javascript
+            function editCurrentText() {
+              $('show-current-text').style.display = 'none'
+              $('edit-current-text').style.display = 'block'
+              new Effect.Highlight('edit-current-text')
+            }
+          .form-submit.inline
+            = submit_tag 'Save Changes', :id => "submit-save-changes", :class => "input-submit"
+        = disable_form_unless_editor current_object
+      .group
+        %h2 Ideas in this Current
+        =link_to "Add idea to this current", new_idea_path("idea[current_id]"=>current_object.id)
+        =render :partial=>"ideas_list", :object => @ideas
+        -# =render :partial=>"admin/ideas/index", :object => current_object.ideas
+    .footer

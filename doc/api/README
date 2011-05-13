@@ -1,0 +1,32 @@
+This documentation uses Staticmatic. To install:
+
+  [sudo] gem install staticmatic
+
+To build docs:
+
+  staticmatic build doc/api/
+
+To develop docs:
+
+  staticmatic preview doc/api/
+
+
+###########################################################
+# A startup item has been generated that will aid in
+# starting postgresql84-server with launchd. It is disabled
+# by default. Execute the following command to start it,
+# and to cause it to launch at startup:
+#
+# sudo launchctl load -w /Library/LaunchDaemons/org.macports.postgresql84-server.plist
+###########################################################
+--->  Installing postgresql84-server @8.4.2_0
+
+To create a database instance, after install do
+ sudo mkdir -p /opt/local/var/db/postgresql84/defaultdb
+ sudo chown postgres:postgres /opt/local/var/db/postgresql84/defaultdb
+ sudo su postgres -c '/opt/local/lib/postgresql84/bin/initdb -D /opt/local/var/db/postgresql84/defaultdb'
+
+To tweak your DBMS, consider increasing kern.sysv.shmmax by adding an increased kern.sysv.shmmax .. to /etc/sysctl.conf
+--->  Activating postgresql84-server @8.4.2_0
+--->  Cleaning postgresql84-server
+

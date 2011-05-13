@@ -1,0 +1,111 @@
+%h1 Response: Profile
+
+%h2 XML Structure
+
+.response.box
+  .tag.i0
+    .name profile<span class='meta'> | </span>author<span class='meta'> | </span>inventor
+  .tag.i1
+    .name id
+    .description== User ID. Clients generally #{should_not} display IDs to users.
+  .tag.i1
+    .name created-at
+    .description (timestamp) Time the user created their account.
+  .tag.i1
+    .name contribution-points
+    .description (integer) User's score in the contribution system.
+  .tag.i1
+    .name admin
+    .description (boolean) Indicates whether the user speak in an official capacity for Best Buy.
+  .tag.i1
+    .name ideas<span class='meta'>?</span>
+    .description== User's most recent ideas. Only appears in #{link 'show profile', 'requests/profile-show.html'} requests.
+  .tag.i2
+    .name idea<span class='meta'>*</span>
+    .description== (#{link 'Idea', './idea.html'})
+  .tag.i1
+    .name comments<span class='meta'>?</span>
+    .description== User's most recent comments. Only appears in #{link 'show profile', 'requests/profile-show.html'} requests.
+  .tag.i2
+    .name comment<span class='meta'>*</span>
+    .description== (#{link 'Comment', './comment.html'})
+
+%h2 Example
+
+.xml<
+  :preserve
+    &lt;profile&gt;
+      &lt;id&gt;2&lt;/id&gt;
+      &lt;name&gt;Paul&lt;/name&gt;
+      &lt;created-at&gt;2009-10-14 19:45:52 UTC&lt;/created-at&gt;
+      &lt;contribution-points&gt;66&lt;/contribution-points&gt;
+      &lt;admin&gt;false&lt;/admin&gt;
+      &lt;ideas&gt;
+        &lt;idea&gt;
+          &lt;id&gt;7&lt;/id&gt;
+          &lt;created-at&gt;2009-11-03 16:38:22 UTC&lt;/created-at&gt;
+          &lt;inappropriate-flags&gt;0&lt;/inappropriate-flags&gt;
+          &lt;rating&gt;1&lt;/rating&gt;
+          &lt;title&gt;Sell wormholes&lt;/title&gt;
+          &lt;description&gt;How convenient it would be to tunnel through space and time!&lt;/description&gt;
+          &lt;user-has-voted&gt;true&lt;/user-has-voted&gt;
+          &lt;inventor&gt;
+            &lt;id&gt;2&lt;/id&gt;
+            &lt;name&gt;Paul&lt;/name&gt;
+            &lt;created-at&gt;2009-10-14 19:45:52 UTC&lt;/created-at&gt;
+            &lt;contribution-points&gt;66&lt;/contribution-points&gt;
+            &lt;admin&gt;false&lt;/admin&gt;
+          &lt;/inventor&gt;
+          &lt;tags&gt;
+          &lt;/tags&gt;
+          &lt;comment-count&gt;0&lt;/comment-count&gt;
+        &lt;/idea&gt;
+        &lt;idea&gt;
+          &lt;id&gt;6&lt;/id&gt;
+          &lt;created-at&gt;2009-11-03 15:14:14 UTC&lt;/created-at&gt;
+          &lt;inappropriate-flags&gt;0&lt;/inappropriate-flags&gt;
+          &lt;rating&gt;1&lt;/rating&gt;
+          &lt;title&gt;Stage Blue Shirt song and dance numbers&lt;/title&gt;
+          &lt;description&gt;Best Buy needs more singing and dancing. Employees could perform elaborate musical numbers about the virtues of different flat-screen TVs.&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;Walking into Best Buy could be like entering a musical!&lt;/description&gt;
+          &lt;user-has-voted&gt;true&lt;/user-has-voted&gt;
+          &lt;inventor&gt;
+            &lt;id&gt;2&lt;/id&gt;
+            &lt;name&gt;Paul&lt;/name&gt;
+            &lt;created-at&gt;2009-10-14 19:45:52 UTC&lt;/created-at&gt;
+            &lt;contribution-points&gt;66&lt;/contribution-points&gt;
+            &lt;admin&gt;false&lt;/admin&gt;
+          &lt;/inventor&gt;
+          &lt;tags&gt;
+            &lt;tag&gt;
+              &lt;id&gt;7&lt;/id&gt;
+              &lt;name&gt;entertainment&lt;/name&gt;
+            &lt;/tag&gt;
+            &lt;tag&gt;
+              &lt;id&gt;8&lt;/id&gt;
+              &lt;name&gt;singing and dancing&lt;/name&gt;
+            &lt;/tag&gt;
+            &lt;tag&gt;
+              &lt;id&gt;6&lt;/id&gt;
+              &lt;name&gt;stores&lt;/name&gt;
+            &lt;/tag&gt;
+          &lt;/tags&gt;
+          &lt;comment-count&gt;2&lt;/comment-count&gt;
+        &lt;/idea&gt;
+      &lt;/ideas&gt;
+      &lt;comments&gt;
+        &lt;comment&gt;
+          &lt;id&gt;3&lt;/id&gt;
+          &lt;idea-id&gt;6&lt;/idea-id&gt;
+          &lt;created-at&gt;2009-11-03 15:31:10 UTC&lt;/created-at&gt;
+          &lt;inappropriate-flags&gt;0&lt;/inappropriate-flags&gt;
+          &lt;text&gt;Hooray for singing!&lt;/text&gt;
+          &lt;author&gt;
+            &lt;id&gt;2&lt;/id&gt;
+            &lt;name&gt;Paul&lt;/name&gt;
+            &lt;created-at&gt;2009-10-14 19:45:52 UTC&lt;/created-at&gt;
+            &lt;contribution-points&gt;66&lt;/contribution-points&gt;
+            &lt;admin&gt;false&lt;/admin&gt;
+          &lt;/author&gt;
+        &lt;/comment&gt;
+      &lt;/comments&gt;
+    &lt;/profile&gt;

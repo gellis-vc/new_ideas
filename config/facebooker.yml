@@ -1,0 +1,50 @@
+# The api key, secret key, and canvas page name are required to get started
+# Tunnel configuration is only needed if you are going to use the facebooker:tunnel Rake tasks
+# Your callback url in Facebook should be set to http://public_host:public_port
+# If you're building a Facebook connect site, 
+#    change the value of set_asset_host_to_callback_url to false
+# To develop for the new profile design, add the following key..
+# api: new
+# remove the key or set it to anything else to use the old facebook design.
+# This should only be necessary until the final version of the new profile is released.
+
+development:
+  api_key: a1aa0f934e9e4e46a0b13b70efca170b
+  secret_key: 3aa8ed1bc90aa21014c1261214556d6b
+  canvas_page_name: wishfulneeds
+  callback_url: http://nimblegorilla.com:10234/fb/connect
+  pretty_errors: true
+  set_asset_host_to_callback_url: false
+  tunnel:
+    public_host_username: 
+    public_host: 
+    public_port: 4007
+    local_port: 3000
+    server_alive_interval: 0
+
+test:
+  api_key: a1aa0f934e9e4e46a0b13b70efca170b
+  secret_key: 3aa8ed1bc90aa21014c1261214556d6b
+  canvas_page_name: wishfulneeds
+  callback_url: http://nimblegorilla.com:10234/fb/connect
+  pretty_errors: true
+  set_asset_host_to_callback_url: false
+  tunnel:
+    public_host_username: 
+    public_host: 
+    public_port: 4007
+    local_port: 3000
+    server_alive_interval: 0
+
+production:
+  api_key: 
+  secret_key: 
+  canvas_page_name: 
+  callback_url: 
+  set_asset_host_to_callback_url: true   
+  tunnel:
+    public_host_username: 
+    public_host: 
+    public_port: 4007
+    local_port: 3000
+    server_alive_interval: 0

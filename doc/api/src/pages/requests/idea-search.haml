@@ -1,0 +1,45 @@
+%h1 Index/Search Ideas
+.request.box
+  .url
+    GET /ideas.xml
+  .url
+    GET /ideas.xml?search_text=
+    .placeholder<> free-form text
+  .url
+    GET /ideas/search/
+    .placeholder<> search/criteria
+    ?format=xml
+  ==All three forms of this request accept #{link 'pagination', 'pagination.html'} parameters.
+  .response
+    Response:
+    = link 'Idea List', 'responses/ideas.html'
+
+%p
+  Returns a list of ideas &mdash; either the top-rated ideas by default, or ideas matching a custom search.
+
+%h2 Searching and Sorting by Criteria
+
+%p
+  When requesting paths of the form /ideas/search/*, BBYIDX parses the * portion as a slash-separated list of search and sorting criteria. Supported search criteria are:
+  
+%ul
+  %li
+    %b recent
+    Order results from most to least recently created.
+  %li
+    %b top-rated
+    Order results from highest to lowest rated.
+  %li
+    %b tag
+    Limit search to ideas tagged with the next item in the search list, e.g. /ideas/search/tag/monkeys.
+  %li
+    %b current
+    Limit search to ideas belonging to the current with the given ID, e.g. /ideas/search/current/34.
+
+%p
+  Requests may combine search criteria. For example, /ideas/search/current/34/tag/monkeys/recent would find the most recent ideas in current 34 tagged with "monkeys."
+
+%h2 Full-Text Seach
+
+%p
+  BBYIDX also supports full-text searching of idea titles and descriptions via the search_text parameter. This searching is currently mutually exclusive with the criterion-based search.

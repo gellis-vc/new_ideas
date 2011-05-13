@@ -1,0 +1,31 @@
+.life-cycle-edit
+  .delete{:onclick => "deleteLifeCycle(#{life_cycle.id}); return false"}
+  %h3
+    - @life_cycle = life_cycle  # for in_place_editor, which sadly needs in instance var
+    = ideax_in_place_editor_field :life_cycle, :name
+  
+  .delete-options{:id => "delete_life_cycle_#{life_cycle.id}"}
+    - form_tag({:action => :delete, :id => life_cycle.id}, {:method => :delete}) do
+      Reassign ideas to:
+      %select{:name => 'reassign_to'}
+        %option{:value => ''} [Unassigned]
+        - all_life_cycles.each do |reassign_lc|
+          %option{:disabled => true}
+          - reassign_lc.steps.each do |reassign_step|
+            %option{:value => reassign_step.id, :disabled => reassign_lc == life_cycle}
+              =h reassign_lc.name + ": " + reassign_step.name
+      = submit_tag 'Delete Life Cycle', :confirm => "Are you sure you want to delete the entire \"#{life_cycle.name}\" life cycle? You cannot undo this."
+      %a{:href => '#', :onclick => "cancelDeleteLifeCycle(#{life_cycle.id}); return false"} Cancel
+
+  - lc_dom_id = "life_cycle_#{life_cycle.id}"
+  %ol.life-cycle-steps{:id => lc_dom_id}
+
+    = render :partial => 'life_cycle_step', :collection => life_cycle.steps, :locals => { :life_cycle => life_cycle }
+
+    %li.new{:id => lc_dom_id + '_new'}
+      = link_to 'Add step', '#', :id => lc_dom_id + '_new_control'
+      - @new_step = LifeCycleStep.new
+      = ideax_in_place_editor_field :new_step, :name, {:id => lc_dom_id + '_new_editor'}, :save_text => 'Add Step', :url => {:action => 'create_step', :id => life_cycle.id}, :external_control => lc_dom_id + '_new_control', :script => true
+
+:javascript
+  #{render :partial => 'life_cycle_sortable', :locals => { :life_cycle => life_cycle }}

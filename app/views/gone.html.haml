@@ -1,0 +1,15 @@
+%div
+  .main.panel
+    .header
+      %h2<
+        This
+        = resource_name.capitalize
+        Is Gone
+    .body
+      .group
+        %p== We're sorry, but this #{resource_name} is no longer available. If you have any questions or comments, please feel free to #{link_to "contact us", home_path('contact')} for more information.
+    .footer
+  %hr.hide
+  #sidebar.aside
+    = render :partial => "shared/sidebar"
+    

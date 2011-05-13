@@ -1,0 +1,10 @@
+-include_contributions ||= false
+
+%id= user.id
+%name=h user.name
+%created-at= user.created_at
+%contribution-points= user.contribution_points.round.to_i
+%admin= user.admin?
+-if include_contributions
+  %ideas= render :partial => 'ideas/idea', :collection => user.ideas.recent_visible(10)
+  %comments= render :partial => 'comments/comment', :collection => user.comments.recent_visible(10)

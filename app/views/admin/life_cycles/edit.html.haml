@@ -1,0 +1,29 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Idea Life Cycles
+    .body
+      .body-content
+        = render :partial => 'life_cycle', :collection => all_life_cycles
+        .new{:id => 'life_cycle_new'}
+          = link_to 'Create New Life Cycle', '#', :id => 'life_cycle_new_control'
+          - @new_lc = LifeCycle.new
+          = ideax_in_place_editor_field :new_lc, :name, {:id => 'life_cycle_new_editor'}, :save_text => 'Create Life Cycle', :url => {:action => 'create'}, :external_control => 'life_cycle_new_control', :script => true
+  
+        :javascript
+          function deleteLifeCycle(lifeCycle) {
+            $('delete_life_cycle_' + lifeCycle).style.display = 'block'
+          }
+  
+          function cancelDeleteLifeCycle(lifeCycle) {
+            $('delete_life_cycle_' + lifeCycle).style.display = 'none'
+          }
+  
+          function deleteStep(step) {
+            $('delete_step_' + step).style.display = 'block'
+          }
+  
+          function cancelDeleteStep(step) {
+            $('delete_step_' + step).style.display = 'none'
+          }
+    .footer

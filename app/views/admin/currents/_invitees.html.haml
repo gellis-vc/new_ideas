@@ -1,0 +1,9 @@
+%ul
+  - @current.has_invitees.each do |invitee|
+    %li=link_to invitee.name, edit_admin_user_path(invitee)
+    
+add invitees 
+%input{:name=>"invite[user][email]", :id=>"invite_user_email"}
+%select{:name=>"invite[user]", :id=>"invite_user"}
+  = options_for_select User.all.map{|x|[x.name,x.id]}
+submit

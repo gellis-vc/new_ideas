@@ -1,0 +1,11 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Currents
+      %ul.actions
+        %li=link_to "+ Create New Current", new_admin_current_path
+        %li.input= render :partial => '/admin/search', :locals => { :model => Current, :name => lambda { |current| current.title } }
+    .body
+      #results
+        = render :partial => 'index'
+    .footer

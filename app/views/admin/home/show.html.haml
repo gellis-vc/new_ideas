@@ -1,0 +1,38 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Admin Home
+    .body
+      .group.admin-home
+        - if current_user.moderator
+          %p This is a quick summary view of a few flagged ideas and comments that need moderation.
+          %h3{ :style => "margin-top:0" } Ideas pending moderation
+          - if @inapp_ideas.empty?
+            %p No ideas require moderation.
+          - else
+            = render :partial => 'ideas', :locals => { :collection => @inapp_ideas, :search => {:pending_moderation => true} }
+          %h3 Comments pending moderation
+          - if @inapp_comments.empty?
+            %p No comments require moderation.
+          - else
+            - search = { :pending_moderation => true }
+            %table.admin-table{:cellspacing => 0, :cellpadding => 6, :width => '100%'}
+              %tr
+                %th= link_to 'Hide', admin_comments_path(search.merge(:sort => 'comments.hidden', :order => 'desc'))
+                %th= link_to 'Text', admin_comments_path(search.merge(:sort => 'comments.text'))
+                %th= link_to 'Flagged', admin_comments_path(search.merge(:sort => 'inappropriate_flags', :order => 'desc'))
+                %th= link_to 'Created', admin_comments_path(search.merge(:sort => 'comments.created_at', :order => 'desc'))
+              = render :partial => 'admin/comments/index_row', :collection => @inapp_comments
+            - if @inapp_comments.next_page
+              .paginate
+                .next_page= link_to 'View all', admin_comments_path(search)
+        - else
+          %p You are not assigned as a moderator of flagged content.
+        - current_user.life_cycle_steps.each do |step|
+          %h3== Ideas Requiring Action — #{h step.life_cycle.name} — #{h step.name}
+          - ideas = ideas_for_step(step)
+          - if ideas.empty?
+            %p No ideas require action.
+          - else
+            = render :partial => 'ideas', :locals => { :collection => ideas, :search => {:life_cycle_step => step.id} }
+    .footer

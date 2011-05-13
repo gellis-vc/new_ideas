@@ -1,0 +1,24 @@
+%h1 HTTP Error Codes
+
+The following HTTP response codes are significant in BBYIDX:
+
+%dl
+  %dt HTTP 401: Unauthorized
+  %dd You must supply oauth credentials for this request.
+%dl
+  %dt HTTP 404: Not Found
+  %dd No item with the given ID exists. This may signal an invalid ID <i>or</i> an invalid URL path structure.
+%dl
+  %dt HTTP 410: Gone
+  %dd This item is no longer available to the public.
+%dl
+  %dt HTTP 422: Unprocessable Entity
+  %dd Likely indicates missing or invalid oauth credentials.
+
+%p
+  These are the codes you are most likely to encounter, and for which you may want to provide special handling. Note that BBYIDX returns other response codes as well.
+
+%p
+  See also the
+  = link 'validation errors', './validation-errors.html'
+  response, which comes with an HTTP 200.

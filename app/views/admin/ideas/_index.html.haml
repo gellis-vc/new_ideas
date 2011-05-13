@@ -1,0 +1,24 @@
+= render :partial => '/admin/search_feedback', :locals => { :model => Idea }
+
+.paginate= will_paginate current_objects
+
+%table.admin-table{:cellspacing => 0, :cellpadding => 6, :width => '100%'}
+  %tr
+    %th= sort_by 'New', 'ideas.viewed'
+    %th{:title => 'Mark an idea as interesting' }= sort_by 'Mark', 'ideas.flagged', 'desc'
+    %th{:title => 'Hide an idea from the public view' }= sort_by 'Hide', 'ideas.hidden', 'desc'
+    %th{:title => 'Mark the idea as spam so it doesn\'t clutter the admin view ' }= sort_by 'Spam', 'ideas.marked_spam', 'desc'
+    %th
+      = sort_by 'Title', 'ideas.title'
+      \/
+      = sort_by 'Description', 'ideas.description'
+    %th Admin/Public Tags
+    %th= sort_by 'Votes', 'ideas.rating', 'desc'
+    %th= sort_by 'Comments', 'comment_count', 'desc'
+    %th= sort_by 'Flagged', 'inappropriate_flags', 'desc'
+    %th= sort_by 'Status', 'ideas.status', 'desc'
+    %th Duplicates
+    %th= sort_by 'Created', 'ideas.created_at', 'desc'
+  = render :partial => 'index_row', :collection => current_objects
+
+.paginate= will_paginate current_objects

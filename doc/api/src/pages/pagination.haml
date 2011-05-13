@@ -1,0 +1,38 @@
+%h1 Pagination
+
+%p In order to prevent server and network overload, BBYIDX uses pagination for large result lists. Paginated requests accept the following parameters:
+
+.request.box
+  %ul
+    %li
+      %b page
+      (optional)
+      Page number to return. The first page is number 1.
+    %li
+      %b page_size
+      (optional)
+      Number of items per page. The default is 20, but this may change. The maximum is 50.
+
+%p A paginated response then includes the following tag attributes:
+
+.response.box
+  %ul
+    %li
+      %b first-index
+      The index of the first returned item in the overall result list. The first record is numbered 0.
+    %li
+      %b page-size
+      The number of results per page.
+    %li
+      %b count
+      The number of results returned on this page. This can be smaller than the page size if this is the last page.
+    %li
+      %b total-count
+      The total number of results on all pages of this search.
+      == This #{may} be an approximate value.
+
+%p==Note that these response attributes may differ from what the client requested! Although it does not currently implement this behavior, in the future BBYIDX #{may} use approximate values for total-count. In that case, the first-index #{may} differ from the expected value of (page-1)*page_size if the requested page ran past the end of the result set. Also, the returned page-size #{may} differ from the page_size request parameter if the parameter was over the maximum.
+  
+%p== If a client uses any pagination parameters, it #{must} check the response pagination attributes to ensure that results are correctly displayed.
+
+%p If a client wishes only to show only the top results of a search or index request, it is free to omit the pagination parameters and ignore the pagination attributes.

@@ -1,0 +1,18 @@
+-# -cache(['comments', CGI.escape(params.inspect)], :expires_in => 5.minutes) do
+%div
+  .main.panel.section
+    .header
+      %h2.icon.comments Comments
+      = will_paginate current_objects
+    .body
+      #comments
+        .comments.inset
+          %div
+            %div
+              = render :collection => current_objects, :partial => 'comment', :locals => { :idea_link => true }
+    .footer
+      = will_paginate current_objects
+  %hr.hide
+  #sidebar.aside
+    = render :partial => "shared/sidebar"
+    

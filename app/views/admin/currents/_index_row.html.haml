@@ -1,0 +1,8 @@
+- current = index_row
+
+%tr{:class => 'data-row', :onclick => "document.location = '#{edit_admin_current_path(current.id)}'"}
+  %td.no-overflow
+    .primary.excerpt= h(current.title)
+    .secondary.excerpt= h(truncate(current.description, 140))
+  %td= current.idea_count
+  %td= current.created_at.strftime('%m/%d/%y')

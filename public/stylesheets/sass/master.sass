@@ -1,0 +1,1713 @@
+@import typography.sass
+@import forms.sass
+
+*
+  :margin 0
+  :padding 0
+
+body
+
+  &.home
+    #wrap
+
+    #content
+      :min-width 960px
+
+    #masthead
+
+#masthead
+  :height 110px
+  :min-width 960px
+
+  > div
+    :margin 0 auto
+    :padding 0 10px
+    :min-width 940px
+    :position relative
+    :width 940px
+
+
+#share
+  :margin-bottom 36px
+
+  .body
+    :padding 24px 0 22px
+    :background #00274b
+    :color #9ec8f0
+    :display none
+    :text-shadow 0 1px 2px #041e36
+
+    > div
+      :margin 0 auto
+      :padding 0 10px
+      :min-width 940px
+      :position relative
+      :width 940px
+
+    a
+      :color #1c8af1
+      :font-weight bold
+
+    &:after
+      :content "."
+      :display block
+      :height 0
+      :clear both
+      :visibility hidden
+
+  .footer
+    :border-top 2px solid #00274b
+
+    > div
+      :margin 0 auto
+      :padding 0 10px
+      :min-width 940px
+      :position relative
+      :width 940px
+
+    h4
+      :margin 10px 0 0
+      :float left
+      :background-color transparent
+      :background-position left top
+      :background-repeat no-repeat
+      :display block
+      :overflow hidden
+      :text-indent -9000px
+
+      &.one
+        :margin-left -20px
+        :height 27px
+        :width 405px
+
+    .tab
+      :margin 0 auto
+      :color #9ec8f0
+      :display block
+      :font-size 11px
+      :font-weight bold
+      :height 26px
+      :line-height 24px
+      :text-align center
+      :text-transform uppercase
+      :width 180px
+
+      span
+        :padding 2px 10px 2px 20px
+        :background-position left center
+        :background-repeat no-repeat
+
+        &.dn
+
+        &.up
+
+      &:hover
+        :color #fff
+
+        span
+          &.dn
+
+          &.up
+
+      &:active
+        :color #425d78
+
+        span
+          &.dn
+
+          &.up
+
+  label strong
+    :color #fff
+
+  .input-text, .input-textarea
+    :border-color #6883a0
+    :-moz-border-radius 0
+    :-webkit-border-radius 0
+    :width 440px
+  .input-textarea
+    :width 440px !important
+  
+  #idea-tags-group
+    :margin-bottom 0
+
+    .input-text
+      :width 270px
+
+  .input-submit
+    :float right
+
+  .aside
+    > div
+      :margin-bottom 8px
+      :padding 12px 16px 10px
+      :background #073158
+      :overflow hidden
+      :-moz-border-radius 8px
+      :-webkit-border-radius 8px
+
+    h4
+      :margin-bottom 8px
+      :color #fff
+
+    p
+      :margin-bottom 0
+
+  .tab
+    :text-shadow 0 1px 2px #041e36
+
+
+#content
+  :padding-bottom 48px
+
+  > div
+    :margin 0 auto
+    :padding 0 10px
+    :min-width 940px
+    :position relative
+    :width 940px
+
+  &:after
+    :content "."
+    :display block
+    :height 0
+    :clear both
+    :visibility hidden
+
+
+#footer
+  :padding 24px 0 48px
+  :clear both
+  :color #9ec8f0
+  :width 100%
+  :text-shadow 0 1px 2px #041e36
+
+  > div
+    :margin 0 auto
+    :padding 0 10px
+    :min-width 940px
+    :position relative
+    :width 940px
+
+  h4
+    :color #1c8af1
+
+  a
+    :color #fff
+
+    &:hover
+      :border-bottom 1px solid #ccc
+    &.bordernone:hover
+      :border-bottom none
+
+  .nav.ext a:hover
+    :border-bottom none
+
+  p.credit
+    :margin 0
+    :float right
+    :font-size 11px
+
+
+#wrap
+
+
+.currents-page,
+.main
+  :float left
+  :width 620px
+
+
+.aside
+  :float right
+  :width 240px
+
+  .section:first-child h2.header
+    :margin-top 0
+
+
+h2
+  &.header
+    :margin 24px 0 0
+    :padding 6px 0 12px
+    :color #666
+    :font-size 13px
+    :line-height 18px
+    :text-transform uppercase
+    :text-shadow 0 1px 2px #fff
+
+    em
+      :color #888
+      :font-family Georgia, serif
+      :font-weight normal
+      :text-transform none
+
+  &.icon
+    :padding-left 36px
+    :background-position left 6px
+    :background-repeat no-repeat
+
+    &.comments
+
+    &.nearby
+
+    &.top-rated
+
+    &.recent
+    
+    &.search
+    
+    &.tag
+
+    &.user
+      
+      &.admin
+
+    &.user-edit
+
+
+img.framed
+  :padding 3px
+  :background #fff
+  :border-bottom 1px solid #bbb
+
+
+.hide
+  :display none
+
+
+.alert
+  :padding 2px 0 2px 24px
+
+
+a.admin
+  :padding-top 3px
+  :padding-left 25px
+
+
+.message
+  :margin-bottom 16px
+
+  a
+    :font-weight bold
+    :text-decoration underline
+
+.error,
+.info, 
+.success
+  :padding 8px 16px 6px 40px
+  :background-position 16px 9px
+  :background-repeat no-repeat
+  :border 2px solid #ddd
+  :-moz-border-radius 4px
+  :-webkit-border-radius 4px
+
+
+.error
+  :background-color #fbe3e4
+  :border-color #fbc2c4
+  :color #8a1f11
+  
+  a
+    :color #8a1f11
+
+
+.info
+  :background-color #fff6bf
+  :border-color #ffd324
+  :color #514721  
+  a
+    :color #514721
+    :font-weight bold
+    :text-decoration underline
+
+
+.success
+  :background-color #e6efc2
+  :border-color #c6d880
+  :color #264409
+  
+  a
+    :color #264409
+
+
+.btn.gray
+  :display block
+  :height 25px
+  :margin-top 8px
+  :padding-left 15px
+  :color #eee
+  :font-weight bold
+  :line-height 25px
+  :text-align center
+  :text-shadow 0 1px 2px #444
+
+  span
+    :display block
+    :height 25px
+    :padding-right 15px
+    :background-position right top
+
+  &:hover
+    :background-position left -25px
+    :color #fff
+    :text-decoration none !important
+
+    span
+      :background-position right -25px
+
+  &:active
+    :background-position left -50px
+    :color #bbb
+
+    span
+      :background-position right -50px
+
+
+h1#logo
+  :margin 0
+  :float left
+  :position relative
+  :left 30px
+  :top 32px
+
+  a
+    :height 56px
+    :width 193px
+    :background-color transparent
+    :background-position left top
+    :background-repeat no-repeat
+    :display block
+    :overflow hidden
+    :text-indent -9000px
+
+
+#nav-primary
+  :float right
+  :position relative
+  :top 45px
+
+
+.nav
+  &.site
+    :margin 0 0 0 10px
+    :float left
+    :height 36px
+    :list-style none
+
+    li
+      :padding-left 2px
+      :float left
+      :height 36px
+
+      a
+        :padding 0 12px
+        :color #fff
+        :display block
+        :font-weight bold
+        :height 36px
+        :line-height 38px
+        :text-shadow 0 1px 2px #1a60a1
+        :text-transform uppercase
+
+        &:active
+          :color #00274b
+          :text-shadow 0 1px 2px #3b81c5
+
+        &.active
+          :text-shadow 0 1px 2px #063058
+
+      &.first
+        :padding-left 0
+        :background none
+
+        a
+          :padding-left 20px
+
+          &:active, &.active
+
+      &.last a
+        :padding-right 20px
+        :background-position right top
+
+        &:active, &.active
+
+    &.alt
+      li.first a
+
+        &:active, &.active
+
+      &.title-ideas
+        :padding-left 54px
+  
+      &.admin
+        :padding-left 54px
+
+  &.user
+    :margin 0
+    :height 25px
+    :list-style none
+    :position absolute
+    :right 0
+    :top 0
+
+    li
+      :padding-left 2px
+      :float left
+      :height 25px
+      
+      form
+        :padding 0 10px
+        :color #9ec8f0
+        :display block
+        :font-size 11px
+        :font-weight bold
+        :height 25px
+        :line-height 25px
+      
+      a
+        :padding 0 10px
+        :color #9ec8f0
+        :display block
+        :font-size 11px
+        :font-weight bold
+        :height 25px
+        :line-height 25px
+
+        &:hover
+          :color #fff
+
+        &:active
+          :color #425d78
+
+      &.first
+        :padding-left 0
+        :background none
+
+        a, form
+          :padding-left 24px
+
+      &.last a, &.last form
+        :padding-right 24px
+        :background-position right top
+      
+      &.last.search form
+
+      &.first.last a, &.first.last form
+        :padding-left 0
+
+      &.search input
+        :margin 3px 0 0
+        :padding 4px 0 0 4px
+        :border none
+        :font-size 11px
+        :height 14px
+
+    a
+      :text-shadow 0 1px 2px #041e36
+
+  &.map
+    :margin 0
+    :list-style none
+
+  &.ext
+    :margin 0
+    :list-style none
+
+  &.supp
+    :margin 0
+    :float left
+    :font-size 11px
+  
+    li
+      :padding-left 18px
+      :display inline
+    
+      &.bby
+        :padding-left 0
+        :float left
+    
+        a
+          :height 18px
+          :width 26px
+          :background-color transparent
+          :background-position left top
+          :background-repeat no-repeat
+          :display block
+          :overflow hidden
+          :text-indent -9000px
+
+
+#footer .nav.supp li.bby a:hover
+  :background-position left -18px
+  :border-bottom none
+			
+
+body.home .nav li.first a.home,
+body.admin-home .nav li.first a.admin-home
+body.top-rated .nav li a.top-rated,
+body.recent .nav li a.recent,
+body.ideas .nav li a.ideas,
+body.users .nav li a.users,
+body.comments .nav li a.comments,
+body.currents .nav li a.currents,
+body.life-cycles .nav li a.life-cycles
+  :text-shadow 0 1px 2px #063058
+body.comments-page .nav li.first a.comments
+body.nearby .nav li.last a.nearby,
+body.tags-page .nav li.last a.tags,
+body.client-apps .nav li.last a.client-apps
+
+
+#intro
+  :margin-left -30px
+  :padding 3px 30px 0
+  :height 343px
+  :width 940px
+  
+  #submit-idea
+    #errorExplanation
+      :display none
+    .fieldWithErrors
+      .input-text, .input-textarea
+        :background-color #fbe3e4
+        :background-image none
+        :border-color #fbc2c4
+
+  
+  .header
+    :padding 20px 20px 0
+    :float left
+    :text-align center
+    :width 300px
+
+    h2
+      :margin-top 10px
+      :height 36px
+      :background-color transparent
+      :background-position left top
+      :background-repeat no-repeat
+      :display block
+      :overflow hidden
+      :text-indent -9000px
+
+    p
+      :padding 0 16px
+      :color #444
+      :font-size 14px
+      :line-height 19px
+
+      strong
+        :color #425d78
+
+    h3
+      :margin 0
+      :color #1c8af1
+
+      em
+        :margin-bottom 6px
+        :font-style normal
+        :display block
+        :letter-spacing -1px
+        :line-height 20px
+
+      small
+        :margin-bottom 8px
+        :color #a6abb0
+        :display block
+        :font-size 14px
+        :font-weight normal
+        :line-height 14px
+
+      a
+        :margin 0 auto
+        :background-image url(../images/intro-signup.png)
+        :height 70px
+        :width 189px
+        :background-color transparent
+        :background-position left top
+        :background-repeat no-repeat
+        :display block
+        :overflow hidden
+        :text-indent -9000px
+
+  .body
+    :float right
+    :width 600px
+
+  form
+    :margin 20px auto 0
+    :width 530px
+
+  .form-group
+    :margin 0
+    :padding 5px 0 5px 30px
+
+  label
+    :display none
+
+  .input-text
+    :border-color #425d78
+    :width 480px
+
+    &.blur,
+    &.example
+      :border-color #a6abb0
+
+  .input-textarea
+    :border-color #425d78
+    :width 480px !important
+
+    &.blur,
+    &.example
+      :border-color #a6abb0
+
+  #idea-title-group
+    :background url(../images/intro-form-icon-bulb.png) left top no-repeat
+
+  #idea-description-group
+    :background url(../images/intro-form-icon-pencil.png) left top no-repeat
+
+  #idea-tags-group
+    :margin-bottom 18px
+    :background url(../images/intro-form-icon-tag.png) left top no-repeat
+    :position relative
+    a
+      :font-size 90%
+    #tags
+      :position absolute
+      :left 40px
+      :top 40px
+      :font-size 90%
+      :color #454545
+      .tag
+        :cursor default
+        :display block
+        :float left
+        :margin 0 10px 0 0
+        :padding 0 0 0 14px
+        :white-space nowrap
+        a
+          :cursor pointer
+          :display block
+          :float left
+          :height 16px
+          :width 10px
+          :margin 0 0 0 -12px
+          :line-height 1.8em
+          :overflow hidden
+          :position absolute
+          :text-indent -9999px
+          :background url(../images/close.gif) left center no-repeat
+          &:hover
+            :background-position -10px center
+    .input-text
+      :float left
+      :width 300px
+      :margin-right 10px
+    
+  .input-submit
+    :float right
+    :margin-top -3px
+  
+  p.note
+    :margin-top 10px
+    :margin-bottom 0
+    :margin-left 30px
+    :color #425d78
+    :font-size 11px
+    :height 37px
+    :line-height 37px
+    :text-align center
+    :width 500px
+
+
+#instructions
+  h2.header
+    :margin-top 24px
+
+  &:after
+    :content "."
+    :display block
+    :height 0
+    :clear both
+    :visibility hidden
+
+
+.instruction 
+  :margin-right 20px
+  :margin-left -4px
+  :padding-left 4px
+  :float left
+  :width 220px
+  
+  h3 
+    :margin-bottom 0
+    :padding-left 48px
+    :background-position left top
+    :background-repeat no-repeat
+    :color #004d96
+    :font-size 18px
+    :font-weight normal
+    :height 36px
+    :line-height 34px
+    
+    em 
+      :font-style normal
+      :font-weight bold
+      
+  .figure img 
+    :margin 0 0 3px 10px
+    :padding-left 3px
+    :display block
+    
+  .figure p 
+    :padding-top 12px
+    :padding-left 10px
+    :color #000
+    :font-size 13px
+    :text-align center
+    
+  &.one h3 
+  
+  &.two h3 
+  
+  &.three h3 
+  
+  &.four 
+    :margin-right 0
+  
+    h3 
+  
+  p
+    :text-shadow 0 1px 2px #fff
+
+
+.ideas-group
+  :margin-right 20px
+  :float left
+  :width 300px
+
+  &.last
+    :margin-right 0
+
+
+.panel
+  :margin-left -5px
+  :position relative
+  :width 630px
+
+  .body
+    :padding-right 5px
+    :padding-left 5px
+    :width 620px
+    :min-height 300px
+
+  .footer
+    :padding-right 5px
+    :padding-left 5px
+    :width 620px
+    :padding-bottom 7px
+    :min-height 15px
+
+    p
+      :margin-bottom 0
+      :padding 16px 20px 12px
+      :color #888
+      :font-size 16px
+      :min-height 18px
+      :position relative
+      :text-align center
+      :text-transform uppercase
+
+  .header
+    :padding 21px 25px 0px
+    :width 580px
+
+    h2
+      :max-width 420px
+      :overflow hidden
+
+      span
+        :vertical-align text-bottom
+
+    h3
+      :line-height 30px
+
+      span
+        :vertical-align text-bottom
+
+  &.full
+    :width 950px
+
+    .body
+      :width 940px
+      .body-content
+        :padding 0 20px
+    .footer
+      :width 940px
+
+    .header
+      :width 900px
+
+  &.summary
+    :width 310px
+
+    .body
+      :width 300px
+
+    .footer
+      :width 300px
+
+    .header
+      :padding 15px 18px 12px
+      :width 274px
+
+      h3
+        :margin-bottom 0
+        :font-size 18px
+        :font-weight normal
+        :line-height 24px
+
+    .pagination
+      :font-size 14px
+
+
+h3.icon
+  :padding-left 24px
+  :background-position left center
+  :background-repeat no-repeat
+
+  &.nearby
+
+  &.popular
+
+  &.recent
+
+  &.user
+
+
+.icon
+  :padding 2px 0 2px 24px
+  :background-position left center
+  :background-repeat no-repeat
+
+  &.nearby
+
+  &.popular
+
+  &.recent
+
+  &.user
+
+  &.twitter
+  
+
+.pagination
+  :margin-bottom 0
+  :padding 16px 10px 12px
+  :color #888
+  :font-size 14px
+  :min-height 18px
+  :position relative
+  :text-align center
+  :text-transform uppercase
+
+  a
+    :padding 4px 5px 3px
+    :color #888
+
+    &:hover
+      :background-color #eee
+      :-moz-border-radius 4px
+      :-webkit-border-radius 4px
+
+    &.prev_page:hover, &.next_page:hover
+      :background-color transparent
+      :text-decoration underline
+
+  span
+    :padding 4px 8px 3px
+    :color #888
+  .gap
+    :padding 0
+
+  .prev_page
+    :padding 0
+    :padding-left 10px
+    :background url(../images/pagination-prev.png) left center no-repeat
+    :left 20px
+    :position absolute
+
+    &.disabled
+      :background-image url(../images/pagination-prev-off.png)
+
+  .next_page
+    :padding 0
+    :padding-right 10px
+    :background url(../images/pagination-next.png) right center no-repeat
+    :position absolute
+    :right 20px
+
+    &.disabled
+      :background-image url(../images/pagination-next-off.png)
+
+  .current
+    :background #888
+    :color #fff
+    :-moz-border-radius 4px
+    :-webkit-border-radius 4px
+
+  .disabled
+    :color #ccc
+
+
+.actions
+  :margin 0
+  :list-style none
+  :position absolute
+  :right 25px
+  :top 24px
+
+  li
+    :margin-left 8px
+    :padding-left 5px
+    :float left
+    :height 25px
+
+    a
+      :padding 5px 10px 0 2px
+      :color #444
+      :display block
+      :font-size 11px
+      :height 20px
+      :text-shadow 0 1px 1px #fff
+
+      img
+        :margin-right 2px
+        :vertical-align top
+
+      &:hover
+        :color #425d78
+
+      &:active
+        :color #444
+
+    &.input
+      :padding-left 0
+      :background none
+
+  .input-custom
+    :margin-right 16px
+    :padding-top 8px
+    :padding-left 12px
+    :border none
+    :font-size 14px
+    :height 18px
+    :outline none
+    :width 60px
+
+    &.long
+      :width 210px
+
+  .input-select
+    :margin-top 3px
+    :vertical-align middle
+
+  label, .input-submit
+    :display none !important
+
+
+.panel.summary .actions
+  :top 14px
+
+  li
+    :margin-left 2px
+    :padding-left 0
+    :background none
+
+    a
+      :padding-right 0
+      :background none
+
+
+.inset
+  :padding-top 6px
+  :overflow hidden
+
+  > div
+    :padding-bottom 5px
+
+    > div
+
+
+.group
+  :padding 18px 0
+
+  >
+    h2, h3, h4, h5, p, ol
+      :padding-left 20px
+
+  &.slate
+    :background #e6ebf0
+    :border-top 1px solid #fff
+    :border-bottom 1px solid #ced6dd
+
+  form label
+    :text-shadow 0 1px 2px #fff
+    em
+      :font-weight normal
+      :text-transform uppercase
+      :color #666
+      :font-size 10px
+      
+
+.content
+  :margin-right 20px
+  :margin-left 20px
+
+
+.body.content
+  :margin-right 0
+  :margin-left 0
+  :padding-right 25px
+  :padding-left 25px
+
+
+.idea
+  :position relative
+
+  .entry-meta
+    :margin 0
+    :list-style none
+
+    li
+      :margin 0 0 6px 0
+      :padding-left 20px
+      :background-position left top
+      :background-repeat no-repeat
+
+      &.comments
+
+      &.tags
+				
+      &.ideas
+        :background-image url(../images/idea-marker.png)
+      
+      &.users
+      &.flag
+      &.sharethis
+        
+  &.main
+    .header
+      :padding-right 155px
+      :width 450px
+
+    .entry-title
+      :margin-bottom 4px
+
+    .posted
+      :font-size 14px
+
+    .vote
+      :right 25px
+      :top 20px
+
+    .vote-for-it a,
+    .vote-for-it span
+      :margin 0
+      :margin-left 2px
+      :background-image url(../images/idea-vote-button.gif)
+      :height 26px
+      :width 106px
+
+    .vote-for-it a:hover
+      :background-position left -26px
+
+    .vote-for-it a:active
+      :background-position left -52px
+    
+    .vote-for-it span
+      :background-position left -78px
+
+    .entry-content
+      :margin-bottom 36px
+      :padding 0 150px 0 20px
+      :font-size 14px
+      :line-height 20px
+    .entry-meta li
+      :margin-bottom 6px
+      :padding-left 24px
+      a
+        :font-weight bold
+        
+    .current-idea-list
+      .entry-content
+        :padding 0
+        :margin 0
+      .entry-meta li
+        :margin-bottom 0
+  &.teaser
+    :margin 0 auto 4px
+    :padding-bottom 3px
+    :width 606px
+
+    &:last-child
+      :margin-bottom 0
+
+    > div
+      :padding-right 20px
+      :padding-left 153px
+      &.the-current
+        :padding-left 20px
+    .posted
+      :margin-bottom 8px
+      :padding-top 10px
+      :height 24px
+      :text-shadow 0 1px 2px #dbedff
+
+    .entry-title
+      :margin-bottom 8px
+      :line-height 24px
+
+      a
+        :border-bottom-width 2px
+
+    .vote
+      :left 9px
+      :top 8px
+
+    .vote-for-it a,
+    .vote-for-it span
+      :margin-left 3px
+      :background-image url(../images/idea-vote-teaser-button.png)
+      :height 25px
+      :width 104px
+
+    .vote-for-it a:hover
+      :background-position left -25px
+
+    .vote-for-it a:active
+      :background-position left -50px
+    
+    .vote-for-it span
+      :background-position left -75px
+
+    .entry-content p
+      :font-size 13px
+      :text-shadow 0 1px 2px #dbedff
+
+    .entry-meta
+      :margin-bottom 8px
+      :padding 6px 8px 4px
+      :background #9ec8f0
+      :-moz-border-radius 8px
+      :-webkit-border-radius 8px
+
+      li
+        :float left
+
+        a
+          :color #425d78
+
+        &.tags
+          :margin-left 18px
+          :width 260px
+
+    .flag, .flagged
+      :background-image url(../images/idea-flag.gif)
+      :height 21px
+      :position absolute
+      :right 8px
+      :top 7px
+      :width 20px
+      :background-color transparent
+      :background-position left top
+      :background-repeat no-repeat
+      :display block
+      :overflow hidden
+      :text-indent -9000px
+
+      &:hover, &.flagged
+        :background-position left -21px
+
+      .flag:active
+        :background-position left -42px
+
+  &.mini
+    :margin 0 2px
+    :padding-bottom 2px
+    :height 58px
+
+    .title
+      :display table-cell
+      :font-weight normal
+      :height 58px
+      :max-width 238px
+      :padding-left 58px
+      :vertical-align middle
+
+      .posted
+        :margin 0
+        :font-size 11px
+
+      .entry-title
+        :margin 0
+        :font-size 13px
+        :line-height 14px
+        :overflow hidden
+
+    .entry-title
+      a
+        :font-weight bold
+
+      .vcard .url
+        :color #1c8af1
+        :font-size 12px
+        :font-weight bold
+
+    .vote
+      :left 5px
+      :top 5px
+
+    .vote-count
+      :margin-bottom 1px
+      :padding-top 0
+      :font-size 18px
+      :height 37px
+      :line-height 37px
+      :width 40px
+      .points
+        :display none !important
+
+    .vote-for-it a,
+    .vote-for-it span
+      :margin-left 2px
+      :background-image url(../images/idea-vote-mini-button.png)
+      :height 11px
+      :width 36px
+
+    .vote-for-it a:hover
+      :background-position left -11px
+
+    .vote-for-it a:active
+      :background-position left -22px
+    
+    .vote-for-it span
+      :background-position left -33px
+
+    &.first-child, &.first
+      :-moz-border-radius 4px 4px 0 0
+      :-webkit-border-top-left-radius 4px
+      :-webkit-border-top-right-radius 4px
+
+    &.last-child, &.last
+      :padding-bottom 2px
+      :border-bottom 1px solid #92c6f8
+      :-moz-border-radius 0 0 4px 4px
+      :-webkit-border-bottom-right-radius 4px
+      :-webkit-border-bottom-left-radius 4px
+
+  h3.entry-title, h4.entry-title
+    :text-shadow 0 1px 2px #dbedff
+
+  .vote-for-it a,
+  .vote-for-it span
+    :background-color transparent
+    :background-position left top
+    :background-repeat no-repeat
+    :display block
+    :overflow hidden
+    :text-indent -9000px
+
+
+.entry-title a:hover
+  :border-bottom 1px solid #1c8af1
+
+
+.posted
+  :clear left
+  :color #425d78
+  :font-size 12px
+  :font-weight normal
+
+  a
+    :font-weight bold
+
+    &:hover
+      :text-decoration underline
+
+
+.published
+  :font-weight bold
+
+
+.vote
+  :margin 0
+  :position absolute
+  :list-style none
+
+  .vote-count
+    :margin-bottom 3px
+    :padding-top 14px
+    :color #00274b
+    :font-size 50px
+    :font-weight bold
+    :height 87px
+    :line-height 50px
+    :text-align center
+    :width 110px
+
+    span
+      :margin-top 4px
+      :display block
+      :font-size 16px
+      :font-weight normal
+      :line-height 16px
+      :text-transform uppercase
+
+  .vote-for-it
+    :line-height 0
+
+
+.idea-meta,
+.current-meta
+  :padding 18px 0
+  :border-bottom 1px solid #ccc
+
+  > div
+    :margin-left 20px
+    :width 280px
+    :float left
+  .related-ideas
+    :float right
+    :width 300px
+  h3
+    :margin-bottom 8px
+    :color #888
+    :font-size 16px
+    :line-height 22px
+    :text-shadow 0 1px 2px #fff
+
+  li a:hover
+    :text-decoration underline
+
+  &:after
+    :content "."
+    :display block
+    :height 0
+    :clear both
+    :visibility hidden
+
+.currents-page
+  .posted
+    :font-size 14px
+  .entry-content
+    :font-size 14px
+    :line-height 20px
+    :margin-bottom 36px
+    :padding 0 0 0 20px
+  .current-idea-list
+    .entry-content
+      :padding 0
+      :margin 0
+    .entry-meta li
+      :margin-bottom 0
+      
+  p.note
+    :margin-top 10px
+    :margin-bottom 0
+    :margin-left 20px
+    :color #425d78
+    :font-size 11px
+    :height 37px
+    :line-height 37px
+    :text-align center
+    :width 500px
+    
+.comments
+  :margin-bottom 18px
+
+
+.comment
+  :margin 0 auto 4px
+  
+  :background red
+  :min-height 47px
+  :position relative
+  :width 606px
+  
+  .comment-inner
+    :margin-bottom 30px
+
+  &:last-child
+    :margin-bottom 0
+
+  h4
+    :margin-bottom 0
+    :line-height 41px
+    :position absolute
+    :text-align right
+    :width 133px
+    :text-shadow 0 1px 2px #dbedff
+
+    a:hover
+      :text-decoration underline
+
+  .posted
+    :margin-bottom 8px
+    :color #888
+    :font-size 13px !important
+    :font-weight normal
+
+  .flag, .flagged
+    :background-image url(../images/comment-flag.gif)
+    :height 20px
+    :position absolute
+    :right 0
+    :top 0
+    :width 20px
+    :background-color transparent
+    :background-position left top
+    :background-repeat no-repeat
+    :display block
+    :overflow hidden
+    :text-indent -9000px
+
+    &:hover, &.flagged
+      :background-position left -20px
+
+    &.flag:active
+      :background-position left -40px
+
+  &:after
+    :content "."
+    :display block
+    :height 0
+    :clear both
+    :visibility hidden
+
+
+.comment-content, .edit-comment-content
+  :padding 12px 18px 0 170px
+  :width 418px
+
+  p:last-child
+    :margin-bottom 0
+
+.edit-comment-content
+  textarea
+    :width  406px
+  .form-submit.inline
+    :padding-left 0
+  .form-group.inline
+    label
+      :width auto
+
+.form-submit
+  a.cancel
+    :margin-left 20px
+    :padding-top 10px
+
+.voted-for
+  :margin 0 auto
+  :list-style none
+  :width 606px
+
+  li
+    :margin-bottom 4px
+    :padding-left 93px
+    :background url(../images/voted-for.png) left top no-repeat
+    :font-size 13px
+    :height 41px
+
+    a
+      :font-size 13px
+      :font-weight bold
+      :line-height 41px
+
+      &:hover
+        :text-decoration underline
+
+    abbr
+      :margin-left 8px
+      :color #888
+      :font-weight normal
+
+    &:last-child
+      :margin-bottom 0
+
+
+.map-big
+  :margin 0 auto
+  :border-right 1px solid #929599
+  :border-left 1px solid #929599
+  :border-bottom 1px solid #5e6063
+  :width 602px
+
+  img
+    :display block
+
+
+.map-mini
+  :margin-bottom 4px
+
+
+.map-enlarge
+  :margin-bottom 0
+  :text-align center
+
+  a
+    :margin-left -20px
+    :padding-left 20px
+    :font-weight bold
+
+
+.tag-cloud
+  :padding 0 20px
+
+  a
+    :margin 0 8px 8px 0
+    :padding 4px 8px 4px 18px
+    :background #fff895 url(../images/tag-hole.gif) 4px center no-repeat
+    :border 1px solid #decf00
+    :border-bottom-width 2px
+    :color #534d00
+    :white-space nowrap
+    :display block
+    :float left
+    :font-size 100% !important
+    :vertical-align baseline
+    :-moz-border-radius 4px
+    :-webkit-border-radius 4px
+    :text-shadow 0 1px 2px #fff
+
+    span
+      :color #425d78
+      :font-weight bold
+
+  &:after
+    :content "."
+    :display block
+    :height 0
+    :clear both
+    :visibility hidden
+
+#sidebar
+  .tag-cloud
+    :padding 0
+
+#sidebar a:hover
+  :text-decoration underline
+
+
+.list-block
+  :margin 0
+  :list-style none
+  :text-shadow 0 1px 2px #fff
+
+  li
+    :margin-bottom 1px
+    :padding 4px 8px 3px 0
+    :background #eee
+    :border 1px solid #f9f9f9
+
+    strong
+      :margin-right 8px
+      :border-right 1px solid #f9f9f9
+      :color #888
+      :float left
+      :font-size 14px
+      :min-width 30px
+      :text-align center
+
+    a
+      :float left
+      :font-weight bold
+
+    em
+      :color #888
+      :float right
+      :font-style normal
+
+    &.alt
+      :background #E4E4E4
+
+    &:first-child
+      :-moz-border-radius 4px 4px 0 0
+      :-webkit-border-top-left-radius 4px
+      :-webkit-border-top-right-radius 4px
+
+    &:last-child
+      :margin-bottom 0
+      :-moz-border-radius 0 0 4px 4px
+      :-webkit-border-bottom-right-radius 4px
+      :-webkit-border-bottom-left-radius 4px
+
+    &:after
+      :content "."
+      :display block
+      :height 0
+      :clear both
+      :visibility hidden
+
+
+.sitemap
+  :margin-bottom 36px
+
+  > div
+    :margin-right 20px
+    :float left
+    :width 140px
+
+    &.last
+      :margin-right 0
+      :float right
+      :width 300px
+
+  h4
+    :margin-bottom 9px
+
+  &:after
+    :content "."
+    :display block
+    :height 0
+    :clear both
+    :visibility hidden
+
+
+.vote-count
+  :text-shadow 0 1px 2px #dbedff
+
+
+.input-submit
+  :background-color transparent
+  :background-position left top
+  :background-repeat no-repeat
+  :overflow hidden
+  :text-indent -9000px
+
+.form-group:after, .header:after, .entry-meta:after
+  :content "."
+  :display block
+  :height 0
+  :clear both
+  :visibility hidden
+
+#map
+  :width 614px
+  :height 406px
+
+.redirect-message
+  :margin 2.4em 20%
+  :padding 0.8em 1.2em
+  :background #bddfff
+  :text-align center
+  :border 2px solid #9ec8f0
+  :font-size 140%
+
+#intro h2, #intro h3 em, .instruction h3, .panel .header h2, .panel .header h3, .group > h3
+  :font-family Futura, "Futura Std", Arial, sans-serif
+  
+#search-wrap
+  :padding-left 20px

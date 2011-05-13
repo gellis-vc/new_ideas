@@ -1,0 +1,13 @@
+= render :partial => '/admin/search_feedback', :locals => { :model => ClientApplication }
+
+.paginate= will_paginate current_objects
+
+%table.admin-table{:cellspacing => 0, :cellpadding => 6, :width => '100%'}
+  %tr
+    %th= sort_by 'Name', 'client_applications.name'
+    %th= sort_by 'URL', 'client_applications.url'
+    %th= sort_by 'Creation date', 'client_applications.created_at', 'desc'
+    %th
+  = render :partial => 'index_row', :collection => current_objects
+
+.paginate= will_paginate current_objects

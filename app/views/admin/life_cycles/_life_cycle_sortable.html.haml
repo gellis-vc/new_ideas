@@ -1,0 +1,2 @@
+- lc_dom_id = "life_cycle_#{life_cycle.id}"
+= sortable_element_js lc_dom_id, :only => 'step', :url => { :action => 'reorder', :id => life_cycle.id }, :complete => visual_effect(:highlight, lc_dom_id), :handle => 'reorder'

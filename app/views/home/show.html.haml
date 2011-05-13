@@ -1,0 +1,103 @@
+%div
+  #intro.section
+    .header
+      %h2== Have an idea for #{BBYIDX::COMPANY_NAME}?
+      %p
+        We're constantly looking for new ways to improve our business and are asking you to help us by
+        %strong sharing
+        your own ideas,
+        %strong voting
+        for ideas you like, and
+        %strong discussing
+        them with the rest of the community.
+      - if logged_in?
+        %h3
+          %em Share Ideas Now
+      - else
+        %h3
+          %em Get Started Now
+          %small or
+          = link_to "Sign Up", signup_url
+    .body#submit-idea
+      = render :partial => 'ideas/new', :locals => { :small => true }
+  %hr.hide
+  #instructions.section
+    %h2.header
+      This is how it works.
+      %em
+        Really, it's this easy.
+    .instruction.one
+      %h3
+        %em Share
+        Your Ideas
+      .figure
+        = image_tag "instruction-1-share-thumb.png", :alt => "Share Your Ideas"
+        %p.legend What's your idea? Big or small. We want to hear it. The future starts here.
+    .instruction.two
+      %h3
+        %em Vote
+        for Good Ideas
+      .figure
+        = image_tag "instruction-2-vote-thumb.png", :alt => "Vote for Good Ideas"
+        %p.legend Like an idea? Vote it up. Tell your friends to vote it up. Let's hear it.
+    .instruction.three
+      %h3
+        %em Discuss
+        with Others
+      .figure
+        = image_tag "instruction-3-discuss-thumb.png", :alt => "Discuss with Others"
+        %p.legend Post your comments and build on an idea. Connect with us directly. Let's make something happen.
+    .instruction.four
+      %h3
+        %em Read
+        our Feedback
+      .figure
+        = image_tag "instruction-4-read-thumb.png", :alt => "Read our Feedback"
+        %p.legend= "We're posting in the comments and on #{link_to 'our blog', '#'}. Let's keep the conversation going."
+  %hr.hide
+
+  #ideas.section
+    %h2.header
+      Here's some ideas.
+      %em
+        This should get you started.
+    .ideas-group
+      #popular-ideas.panel.summary.hfeed
+        .header
+          %h3.icon.popular
+            Popular Ideas
+          %ul.actions
+            -#%li= link_to image_tag("icn/16-sq-map.png", :alt => "Map these ideas"), "#"
+            -#%li= link_to image_tag("icn/16-sq-rss.png", :alt => "Subscribe to these ideas"), "/ideas.rss"
+        .body.ideas
+          = render :partial => 'idea', :collection => search_ideas(:search => 'top-rated', :page_size => 5)
+        .footer
+          .pagination
+            = link_to 'More', idea_search_path(:search => 'top-rated'), :class => 'next_page'
+    .ideas-group
+      #recent-ideas.panel.summary.hfeed
+        .header
+          %h3.icon.recent
+            Recent Ideas
+          %ul.actions
+            -#%li= link_to image_tag("icn/16-sq-map.png", :alt => "Map these ideas"), "#"
+            %li= link_to image_tag("icn/16-sq-rss.png", :alt => "Subscribe to these ideas"), "/ideas.rss"
+        .body.ideas
+          = render :partial => 'idea', :collection => search_ideas(:search => 'recent', :page_size => 5)
+        .footer
+          .pagination
+            = link_to 'More', idea_search_path(:search => 'recent'), :class => 'next_page'
+    .ideas-group.last
+      #nearby-ideas.panel.summary.hfeed.last
+        .header
+          %h3.icon.nearby
+            Nearby Ideas
+          %ul.actions
+            -#%li= link_to image_tag("icn/16-sq-map.png", :alt => "Map these ideas"), "#"
+            -#%li= link_to image_tag("icn/16-sq-rss.png", :alt => "Subscribe to these ideas"), "#"
+        .body.ideas
+          = render :partial => 'idea', :collection => search_ideas_near_user(:limit => 5)
+        .footer
+          .pagination
+            = link_to 'More', map_path, :class => "next_page"
+              

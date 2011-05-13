@@ -1,0 +1,44 @@
+%h1 Response: Comment
+
+%h2 XML Structure
+
+.response.box
+  .tag.i0
+    .name comment
+  .tag.i1
+    .name id
+    .description== (integer) ID of the comment. Clients generally #{should_not} display IDs to users.
+  .tag.i1
+    .name idea-id
+    .description== (integer) ID of the idea this comment is commenting on. Clients generally #{should_not} display IDs to users.
+  .tag.i1
+    .name created-at
+    .description (timestamp) Time the comment was posted.
+  .tag.i1
+    .name inappropriate-flags
+    .description (integer) Number of times the comment has been flagged as inappropriate.
+  .tag.i1
+    .name text
+    .description== (sanitized HTML) Text of the comment. The description #{may} include HTML tags. If so, any tags will be escaped, or encoded in a CDATA section.
+  .tag.i1
+    .name author
+    .description== (#{link 'Profile', './profile.html'}) Descibes the inventor of this idea.
+  
+%h2 Example
+
+.xml<
+  :preserve
+    &lt;comment&gt;
+      &lt;id&gt;3&lt;/id&gt;
+      &lt;idea-id&gt;6&lt;/id&gt;
+      &lt;created-at&gt;2009-11-03 15:16:14 UTC&lt;/created-at&gt;
+      &lt;inappropriate-flags&gt;0&lt;/inappropriate-flags&gt;
+      &lt;text&gt;Hooray for singing!&lt;/text&gt;
+      &lt;author&gt;
+        &lt;id&gt;2&lt;/id&gt;
+        &lt;name&gt;Tom&lt;/name&gt;
+        &lt;created-at&gt;2009-10-14 19:45:52 UTC&lt;/created-at&gt;
+        &lt;contribution-points&gt;14&lt;/contribution-points&gt;
+        &lt;admin&gt;false&lt;/admin&gt;
+      &lt;/author&gt;
+    &lt;/comment&gt;

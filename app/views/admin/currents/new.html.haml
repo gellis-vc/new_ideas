@@ -1,0 +1,15 @@
+#intro.section.current
+  .header
+    %h2 Have a topic you want to solicit ideas on?
+    %p
+      == Create currents to get feedback from #{BBYIDX::SHORT_SITE_NAME} users.
+    - if logged_in?
+      %h3
+        %em Create a Current Now
+    - else
+      %h3
+        %em Get Started Now
+        %small or
+        = link_to "Sign Up", signup_url
+  .body#submit-current
+    = render :partial => 'new'

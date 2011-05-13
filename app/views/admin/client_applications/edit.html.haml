@@ -1,0 +1,15 @@
+%div
+  .panel.full.section.hfeed
+    .header
+      %h2 Edit API client application
+      %h3= link_to '&laquo; Back to app list', admin_client_applications_path
+    .body
+      .group
+        - form_for current_object, :url => object_url do |f|
+          = render :partial => "form", :locals => { :f => f }
+          .form-submit.inline
+            = submit_tag 'Save Changes', :id => "submit-save-changes", :class => "input-submit"
+
+        -# ------- STYLE NEEDED ------
+        -# Put this in some kind of red warning box or something
+        = link_to 'Delete this application', admin_client_application_path(current_object), :confirm => "Do you really want to delete #{h current_object.name}? This application will no longer work, and this is not undoable.", :method => :delete
